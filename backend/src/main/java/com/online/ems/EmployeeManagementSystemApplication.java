@@ -14,14 +14,17 @@ public class EmployeeManagementSystemApplication {
 		SpringApplication.run(EmployeeManagementSystemApplication.class, args);
 	}
 
-	// run this only on profile 'demo', avoid run this in test
-	/*
-	 * @Profile("demo")
-	 * 
-	 * @Bean CommandLineRunner initDatabase(EmployeeRepository repository) { return
-	 * args -> { repository.save(new Employee("FirstName", "LastName",
-	 * "2019/07/28")); repository.save(new Employee("FirstName1", "LastName1",
-	 * "2019/07/28")); repository.save(new Employee("FirstName2", "LastName2",
-	 * "2019/07/28")); }; }
-	 * 
-	 */}
+// run this only on profile 'demo', avoid run this in test
+
+	@Profile("demo")
+
+	@Bean
+	CommandLineRunner initDatabase(EmployeeRepository repository) {
+		return args -> {
+			repository.save(new Employee("FirstName", "LastName", "2019/07/28"));
+			repository.save(new Employee("FirstName1", "LastName1", "2019/07/28"));
+			repository.save(new Employee("FirstName2", "LastName2", "2019/07/28"));
+		};
+	}
+
+}
