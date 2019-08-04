@@ -80,7 +80,7 @@
 							<outputDirectory>${project.build.directory}/classes/resources/</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${project.parent.basedir}/tutorial-web/src/main/web/dist/app/</directory>
+									<directory>${project.parent.basedir}/frontend/src/main/web/dist/app/</directory>
 								</resource>
 							</resources>
 						</configuration>
@@ -104,7 +104,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
-					<warName>tutorial-app</warName>
+					<warName>ems-app</warName>
 				</configuration>
 			</plugin>
 		</plugins>
