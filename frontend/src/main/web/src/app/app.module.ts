@@ -8,17 +8,17 @@ import { DepartmentComponent } from './department/department.component';
 import { EmployeeService } from './service/employee.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EmployeeComponent,
-    DepartmentComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
-  providers: [EmployeeService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        EmployeeComponent,
+        DepartmentComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule
+    ],
+    providers: [EmployeeService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,20 +3,21 @@ import { Employee } from '../model/employee';
 import { EmployeeService } from '../service/employee.service';
 
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+	selector: 'app-employee',
+	templateUrl: './employee.component.html',
+	styleUrls: ['./employee.component.css']
 })
+
 export class EmployeeComponent implements OnInit {
 
-  employees: Employee[];
+	employees: Employee[];
 
-  constructor(private employeeService: EmployeeService) { }
+	constructor(private employeeService: EmployeeService) { }
 
-  ngOnInit() {
-    this.employeeService.findAll().subscribe(data => {
-      this.employees = data;
-    });
-  }
+	ngOnInit() {
+		this.employeeService.findAll().subscribe(data => {
+			this.employees = data;
+		});
+	}
 
 }
