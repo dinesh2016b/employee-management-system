@@ -1,34 +1,18 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <div style="text-align:center">
+                <h2>Employee Managament System</h2>
+            </div>
+            <nav class="navbar navbar-expand navbar-dark bg-dark">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" routerLink='/employees' routerLinkActive="active">Employee</a>
+                    <a class="nav-item nav-link" routerLink='/departments' routerLinkActive="active">Department</a>
+                    <a class="nav-item nav-link" routerLink='/departmentslist'
+                        routerLinkActive="active">Department List</a>
+                </div>
+            </nav>
             <router-outlet></router-outlet>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container">
-                <div class="row">
-                    <h1>Employee Managament System</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container">
-                <div class="row">
-                    <app-employee></app-employee>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container">
-                <div class="row">
-                    <app-department></app-department>
-                </div>
-            </div>
         </div>
     </div>
 </div>
