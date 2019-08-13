@@ -1,4 +1,4 @@
-package com.online.ems;
+package com.online.ems.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,18 +9,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "employees")
-public class Employee {
+public class Employees {
 
 	private long empNo;
 	private String firstName;
 	private String lastName;
 	private String birthDate;
 
-	public Employee() {
+	public Employees() {
 
 	}
 
-	public Employee(String firstName, String lastName, String birthDate) {
+	public Employees(String firstName, String lastName, String birthDate) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
