@@ -19,7 +19,7 @@ export class EmployeeService {
     }
 
     public findAll(): Observable<Employee[]> {
-        return this.http.get<Employee[]>(this.employeeUrl + 'employees');
+        return this.http.get<Employee[]>(this.employeeUrl + 'employees/');
     }
 
     public save(employee: Employee) {
