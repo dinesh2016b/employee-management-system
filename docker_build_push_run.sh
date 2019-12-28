@@ -15,4 +15,4 @@ echo "----------> Docker push"
 sudo docker push dinesh2016b/employee-management-system:0.1
 
 echo "----------> Docker run"
-sudo docker run -t -p 8090:8090 dinesh2016b/employee-management-system:0.1
+sudo docker run -t -d -p 8090:8090 dinesh2016b/employee-management-system:0.1
