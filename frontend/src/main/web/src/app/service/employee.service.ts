@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class EmployeeService {
 
-    private employeeUrl: string = 'http://localhost:8080/';
+    private employeeUrl: string = 'http://localhost:8090/';
 
     constructor(private http: HttpClient) {
         // this.employeeUrl = 'http://localhost:8080/employees';
@@ -19,7 +19,7 @@ export class EmployeeService {
     }
 
     public findAll(): Observable<Employee[]> {
-        return this.http.get<Employee[]>(this.employeeUrl + 'employees/');
+        return this.http.get<Employee[]>(this.employeeUrl + 'employees');
     }
 
     public save(employee: Employee) {
