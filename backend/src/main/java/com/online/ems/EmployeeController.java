@@ -41,7 +41,7 @@ public class EmployeeController {
 		Employees employee = null;
 		List<Employees> list = new ArrayList<Employees>();
 		
-		for (int i= 10001; i < 10020; i++){}
+		for (int i= 10001; i < 10020; i++){
 			employee = employeeRepository.findById(i).orElseThrow(
 					() -> new Exception("Employees not found for this empNo :: " + employeeId));
 			list.add(employee);
