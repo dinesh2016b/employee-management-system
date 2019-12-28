@@ -24,7 +24,7 @@ import com.online.ems.exception.ResourceNotFoundException;
 import com.online.ems.model.Employees;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://10.24.231.148:4200")
 public class EmployeeController {
 	
 	private Logger logger = LoggerFactory.getLogger(EmployeeController.class);	
