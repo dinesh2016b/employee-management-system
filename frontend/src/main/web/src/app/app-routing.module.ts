@@ -12,7 +12,7 @@ const routes: Routes = [
     { path: 'departmentslist', component: DepartmentListComponent },
     { path: 'departmentslist/:id', component: DepartmentDetailsComponent },
     { path: 'departments', component: DepartmentComponent },
-    { path: 'employees/all', component: EmployeeListComponent },
+    { path: 'employees', component: EmployeeListComponent },
     { path: 'employees/:id', component: EmployeeComponent },
     { path: '**', component: PageNotFoundComponent }
 ];

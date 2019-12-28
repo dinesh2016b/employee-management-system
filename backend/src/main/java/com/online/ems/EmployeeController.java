@@ -32,7 +32,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	@GetMapping("/employees/all")
+	@GetMapping("/employees/")
 	public ResponseEntity<List<Employees>> getAllEmployees() {
 		System.out.println("----> employeeId - List ");
 		
