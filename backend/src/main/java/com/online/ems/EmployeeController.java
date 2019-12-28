@@ -32,7 +32,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	@GetMapping("/employees/")
+	@GetMapping("/employees")
 	public ResponseEntity<List<Employees>> getAllEmployees() throws Exception {
 		System.out.println("----> employeeId - List ");
 		
@@ -41,7 +41,7 @@ public class EmployeeController {
 		Employees employee = null;
 		List<Employees> list = new ArrayList<Employees>();
 		
-		for (int i= 10001; i < 10020; i++){
+		for (int i= 10001; i < 10021; i++){
 			employee = employeeRepository.findById((long) i).orElseThrow(
 					() -> new Exception("Employees not found for this empNo :: "));
 			list.add(employee);
