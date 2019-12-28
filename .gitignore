@@ -1,0 +1,7 @@
+frontend/src/main/web/node/*
+frontend/src/main/web/e2e/*
+frontend/src/main/web/dist/*
+.classpath
+.project
+.settings/
+target/

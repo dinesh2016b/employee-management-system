@@ -1,0 +1,26 @@
+sudo apt-get install mysql-server
+
+sugar
+washing powder 
+hand wash
+toilet paper 
+
+
+GRANT ALL PRIVILEGES ON employees.* TO 'employee'@'10.24.231.113' IDENTIFIED BY 'employee' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'USERNAME'@'1.2.3.4' IDENTIFIED BY 'PASSWORD' WITH GRANT OPTION;
+
+
+CREATE USER 'test'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
+
+CREATE USER 'ems'@'10.24.231.113' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* TO 'ems'@'10.24.231.113' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+
+------------------
+
+Set up MySQL for remote access on Ubuntu Server

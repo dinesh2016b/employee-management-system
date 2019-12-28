@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table-filter match-name="current_dept_emp"
+		match-catalog="employees">
+	</table-filter>
+	<table-filter match-name="departments" match-catalog="employees"></table-filter>
+	<table-filter match-name="dept_emp" match-catalog="employees"></table-filter>
+	<table-filter match-name="dept_emp_latest_date"
+		match-catalog="employees">
+	</table-filter>
+	<table-filter match-name="dept_manager" match-catalog="employees"></table-filter>
+	<table-filter match-name="employees" match-catalog="employees"></table-filter>
+	<table-filter match-name="salaries" match-catalog="employees"></table-filter>
+	<table-filter match-name="titles" match-catalog="employees"></table-filter>
+</hibernate-reverse-engineering>
