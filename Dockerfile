@@ -4,10 +4,13 @@
 ############################################################
 
 # Set the base image to use to Ubuntu
-FROM ubuntu:19.04
+# FROM ubuntu:19.04
+
+# OpenJDK JRE
+FROM openjdk:8
 
 # Set the file maintainer (your name - the file's author)
-MAINTAINER Lars Vogel
+MAINTAINER Dinesh
 
 # Update the default application repository sources list
 RUN apt-get update
