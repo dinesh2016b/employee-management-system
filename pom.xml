@@ -68,7 +68,7 @@
 							<command>deploy target/employee.management.system.war</command>
 						</commands>
 					</execute-commands>
-					<hostname>10.24.231.148:8090</hostname>
+					<hostname>localhost:8090</hostname>
 					<username>admin</username>
 					<password>Dinesh@123</password>
 				</configuration>
