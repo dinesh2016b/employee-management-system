@@ -1,0 +1,29 @@
+version: "2"
+services:
+  employee-management-system:
+    image: dinesh2016b/employee-management-system:0.1
+    ports:
+      - "8090:8090"
+    networks:
+      - employee-mysql
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: mysql:8
+    networks:
+      - employee-mysql
+    environment:
+      MYSQL_DATABASE: 'employee'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'Dinesh@123'
+      MYSQL_ROOT_PASSWORD: 'Dinesh@123'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+
+networks:
+  employee-mysql: 
