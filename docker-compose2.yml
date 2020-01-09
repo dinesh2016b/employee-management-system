@@ -18,7 +18,7 @@ services:
       - employee-db:/var/lib/mysql
 
   employee-management-system:
-    image: dinesh2016b/employee-management-system:0.1
+    image: dinesh2016b/employee-management-system
     container_name: employee-management-system
     ports:
       - 8090:8090
