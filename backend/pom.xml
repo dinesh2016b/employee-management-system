@@ -43,12 +43,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-integration</artifactId>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>employee.management.system</groupId>
 			<artifactId>ems-frontend</artifactId>
 			<version>${project.version}</version>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency> 
+		-->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -67,6 +69,7 @@
 
 	<build>
 		<plugins>
+		<!-- 	
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
@@ -87,7 +90,8 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+		 -->
+		 	<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 			</plugin>

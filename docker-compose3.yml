@@ -1,0 +1,34 @@
+version: "3"
+services:
+  employeemysqldb:
+    container_name: employeemysqldb
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: employees
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Dinesh@123
+      MYSQL_ROOT_PASSWORD: Dinesh@123
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+       employee-mysql:
+    volumes:
+      - employee-db:/var/lib/mysql
+
+  employee-management-system:
+    image: dinesh2016b/employee-management-system
+    container_name: employee-management-system
+    ports:
+      - 8090:8090
+    networks:
+      - employee-mysql
+    depends_on:
+      - employeemysqldb
+
+volumes:
+  employee-db:
+   
+networks:
+  employee-mysql:

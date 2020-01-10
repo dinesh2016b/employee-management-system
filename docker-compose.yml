@@ -1,7 +1,7 @@
 version: "3"
 services:
-  employeemysqldb:
-    container_name: employeemysqldb
+  employee-mysql-service:
+    container_name: employee-mysql-service
     image: mysql:8
     environment:
       MYSQL_DATABASE: employees
@@ -13,22 +13,42 @@ services:
     expose:
       - 3306
     networks:
-       employee-mysql:
+       employee-mysql-networks:
     volumes:
-      - employee-db:/var/lib/mysql
+      - employee-mysql-volumes:/var/lib/mysql
 
-  employee-management-system:
+  employee-nginx:
+      container_name: employee-nginx
+      image: nginx
+      build:
+        context: .
+        dockerfile: .docker/nginx.dockerfile
+      volumes:
+        - ./frontend/src/main/web/dist:/usr/share/nginx/html
+      ports:
+        - "8070:8070"
+        - "443:443"
+  
+      networks:
+        - employee-nginx-networks
+
+  employee-management-system-service:
     image: dinesh2016b/employee-management-system
-    container_name: employee-management-system
+    container_name: employee-management-system-service
+    build:
+        context: .
+        dockerfile: ./backend/Dockerfile
     ports:
       - 8090:8090
     networks:
-      - employee-mysql
+      - employee-mysql-networks
     depends_on:
-      - employeemysqldb
+      - employee-mysql-service
 
 volumes:
-  employee-db:
-   
+  employee-mysql-volumes:
+
 networks:
-  employee-mysql:
+  employee-mysql-networks:
+  employee-nginx-networks:
+ 
