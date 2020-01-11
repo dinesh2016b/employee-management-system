@@ -33,11 +33,13 @@ services:
   employee-nginx:
     container_name: employee-nginx
     image: nginx
+    build:
+        context: .
+        dockerfile: ./frontend/Dockerfile
     volumes:
       - ./frontend/src/main/web/dist/app:/usr/share/nginx/html
     ports:
       - 8070:8070
-      - 443:443  
     networks:
       - employee-networks
 
