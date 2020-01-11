@@ -6,13 +6,12 @@
 # Set the base image to use to Ubuntu
 # FROM ubuntu:19.04
 
-# OpenJDK JRE
-FROM openjdk:8
+FROM nginx:1.13.3-alpine
+## Remove default nginx website
 
-# Set the file maintainer (your name - the file's author)
-MAINTAINER Dinesh
+RUN rm -rf /usr/share/nginx/html/*
+## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
 
-# copy WAR into image
-COPY backend/target/ems-backend-1.0.0.war /ems.war 
-# run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=default", "/ems.war"]
+COPY /src/main/web/dist/app /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
