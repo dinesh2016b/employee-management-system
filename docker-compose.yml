@@ -2,12 +2,9 @@ version: "3"
 services:
   employee-mysqldb:
     container_name: employee-mysqldb
-    image: mysql:8
-    environment:
-      MYSQL_DATABASE: employees
-      MYSQL_USER: root
-      MYSQL_PASSWORD: Dinesh@123
-      MYSQL_ROOT_PASSWORD: Dinesh@123
+    build:
+        context: .
+        dockerfile: ./db/Dockerfile
     ports:
       - 3306:3306
     expose:
@@ -36,10 +33,10 @@ services:
     build:
         context: .
         dockerfile: ./frontend/Dockerfile
-    volumes:
-      - ./frontend/src/main/web/dist/app:/usr/share/nginx/html
+#    volumes:
+#      - ./frontend/src/main/web/dist/app:/usr/share/nginx/html
     ports:
-      - 8070:8070
+      - 80:80
     networks:
       - employee-networks
 
