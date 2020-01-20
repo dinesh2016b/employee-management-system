@@ -19,5 +19,4 @@ export class EmployeeListComponent implements OnInit {
             this.employees = data;
         });
     }
-
 }

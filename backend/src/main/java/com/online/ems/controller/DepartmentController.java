@@ -33,22 +33,15 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentRepository departmentRepository;
 
-	@GetMapping("/department")
+	@GetMapping("/departments")
 	public ResponseEntity<List<Departments>> getAllEmployees() throws Exception {
-		logger.info("----> departmentId - List ");
-		
-		//return ResponseEntity.ok().body(employeeRepository.findAll());
+		logger.info("----> department list ");
 
-		Departments employee = null;
-		List<Departments> list = new ArrayList<Departments>();
+		List<Departments> departmentList = new ArrayList<Departments>();
+				
+		departmentList = departmentRepository.findAll();
 		
-		for (int i= 10001; i < 10021; i++){
-			employee = departmentRepository.findById((long) i).orElseThrow(
-					() -> new Exception("Departments not found for this deptId :: "));
-			list.add(employee);
-		}
-
-		return ResponseEntity.ok().body(list);	
+		return ResponseEntity.ok().body(departmentList);	
 	}
 
 	@GetMapping("/departments/{id}")
@@ -56,10 +49,10 @@ public class DepartmentController {
 			throws Exception {
 		try {
 			logger.info("----> departmentId - " + departmentId);
-			Departments employee = departmentRepository.findById(departmentId).orElseThrow(
+			Departments department = departmentRepository.findById(departmentId).orElseThrow(
 					() -> new Exception("Departments not found for this deptId :: " + departmentId));
 			List<Departments> list = new ArrayList<Departments>();
-			list.add(employee);
+			list.add(department);
 			return ResponseEntity.ok().body(list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,27 +61,27 @@ public class DepartmentController {
 	}
 
 	@PostMapping("/departments")
-	public Departments createEmployee(@Valid @RequestBody Departments employee) {
-		return departmentRepository.save(employee);
+	public Departments createEmployee(@Valid @RequestBody Departments department) {
+		return departmentRepository.save(department);
 	}
 
 	@PutMapping("/departments/{deptId}")
 	public ResponseEntity<Departments> updateEmployee(@PathVariable(value = "deptId") Long departmentId,
 			@Valid @RequestBody Departments employeeDetails) throws ResourceNotFoundException {
-		Departments employee = departmentRepository.findById(departmentId)
+		Departments department = departmentRepository.findById(departmentId)
 				.orElseThrow(() -> new ResourceNotFoundException("Departments not found for this deptId :: " + departmentId));
 
-		final Departments updatedEmployee = departmentRepository.save(employee);
+		final Departments updatedEmployee = departmentRepository.save(department);
 		return ResponseEntity.ok(updatedEmployee);
 	}
 
 	@DeleteMapping("/departments/{deptId}")
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "deptId") Long departmentId)
 			throws ResourceNotFoundException {
-		Departments employee = departmentRepository.findById(departmentId)
+		Departments department = departmentRepository.findById(departmentId)
 				.orElseThrow(() -> new ResourceNotFoundException("Departments not found for this deptId :: " + departmentId));
 
-		departmentRepository.delete(employee);
+		departmentRepository.delete(department);
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return response;
