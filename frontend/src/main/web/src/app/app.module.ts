@@ -8,10 +8,11 @@ import { EmployeeComponent } from './employee/employee.component';
 import { DepartmentComponent } from './department/department.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { DepartmentDetailsComponent } from './department-details/department-details.component';
+import { SalariesComponent } from './salaries/salaries.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { EmployeeService } from './service/employee.service';
-import { DepartmentService} from './service/department.service';
+import { DepartmentService } from './service/department.service';
 
 @NgModule({
     declarations: [
@@ -21,14 +22,15 @@ import { DepartmentService} from './service/department.service';
         RoutingComponent,
         PageNotFoundComponent,
         DepartmentDetailsComponent,
-        EmployeeListComponent
+        EmployeeListComponent,
+        SalariesComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         AppRoutingModule
     ],
-    providers: [EmployeeService,DepartmentService],
+    providers: [EmployeeService, DepartmentService],
     bootstrap: [AppComponent]
 })
 

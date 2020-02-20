@@ -5,6 +5,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentListComponent } from './department-list/department-list.component';
 import { DepartmentDetailsComponent } from './department-details/department-details.component';
+import { SalariesComponent } from './salaries/salaries.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'departments', component: DepartmentComponent },
     { path: 'employees', component: EmployeeListComponent },
     { path: 'employees/:id', component: EmployeeComponent },
+    { path: 'salaries', component: SalariesComponent },
     { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -24,4 +26,4 @@ const routes: Routes = [
 
 export class AppRoutingModule { }
 
-export const RoutingComponent = [DepartmentListComponent, DepartmentComponent, EmployeeComponent, EmployeeListComponent, PageNotFoundComponent, DepartmentDetailsComponent];
+export const RoutingComponent = [DepartmentListComponent, DepartmentComponent, EmployeeComponent, EmployeeListComponent, SalariesComponent, PageNotFoundComponent, DepartmentDetailsComponent];

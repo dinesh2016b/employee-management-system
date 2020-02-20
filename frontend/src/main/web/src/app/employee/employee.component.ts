@@ -21,6 +21,8 @@ export class EmployeeComponent implements OnInit {
         //    this.employees = data;
         // });
 
+        console.log('employeeComponent.....');
+
         this.route.params.subscribe(params => {
             const id = params['id'];
             console.log('----> id : ' + id);
@@ -30,6 +32,7 @@ export class EmployeeComponent implements OnInit {
                 .subscribe(data => this.employees = data);
 
             console.log('-----> Employees :' + this.employees);
+        
         });
 
     }
