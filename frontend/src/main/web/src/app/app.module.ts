@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { EmployeeService } from './service/employee.service';
 import { DepartmentService } from './service/department.service';
+import { SalariesService } from './service/salaries.service';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,7 @@ import { DepartmentService } from './service/department.service';
         HttpClientModule,
         AppRoutingModule
     ],
-    providers: [EmployeeService, DepartmentService],
+    providers: [EmployeeService, DepartmentService, SalariesService],
     bootstrap: [AppComponent]
 })
 

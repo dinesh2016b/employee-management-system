@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Salaries } from '../model/salaries';
+import { SalariesService } from '../service/salaries.service';
 
 @Component({
   selector: 'app-salaries',
@@ -7,12 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SalariesComponent implements OnInit {
-  title = "Salaries";
+  title = "Salaries List";
+  salaries: Salaries[];
 
-  constructor() { }
+  constructor(private salariesService: SalariesService) { 
 
-  ngOnInit() {
-  
   }
 
+  ngOnInit() {
+    this.salariesService.findAll().subscribe(data => {
+      this.salaries = data;
+    });
+  }
 }

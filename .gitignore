@@ -4,4 +4,5 @@ frontend/src/main/web/dist/*
 .classpath
 .project
 .settings/
+db/sql-scripts/*
 target/

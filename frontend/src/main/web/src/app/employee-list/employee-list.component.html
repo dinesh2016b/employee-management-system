@@ -10,11 +10,12 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>ID.</th>
+                            <th>Emp. Id</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Birth Date</th>
-                            <th width="20%"></th>
+                            <th width="08%">Edit</th>
+                            <th width="08%">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,7 +25,9 @@
                             <td><span>{{ employee.lastName }}</span></td>
                             <td><span>{{ employee.birthDate }}</span></td>
                             <td>
-                                <button type="button" class="btn btn-success custom-width">Edit</button>
+                                <button type="button" class="btn btn-success custom-width"> Edit </button>
+                            </td>
+                            <td>
                                 <button type="button" class="btn btn-danger custom-width">Remove</button>
                             </td>
                         </tr>
