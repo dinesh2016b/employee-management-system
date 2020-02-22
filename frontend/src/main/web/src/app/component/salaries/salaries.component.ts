@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Salaries } from '../model/salaries';
-import { SalariesService } from '../service/salaries.service';
+import { Salaries } from '../../model/salaries';
+import { SalariesService } from '../../service/salaries.service';
 
 @Component({
   selector: 'app-salaries',

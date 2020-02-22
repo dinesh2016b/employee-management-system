@@ -4,31 +4,27 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <span class="lead">List of Employees </span>
+                <span class="lead">List of Department </span>
             </div>
             <div class="tablecontainer">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Emp. Id</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Birth Date</th>
+                            <th>ID.</th>
+                            <th>Department Name</th>
                             <th width="08%">Edit</th>
                             <th width="08%">Remove</th>
-                        </tr>
+                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let employee of employees">
-                            <td><span>{{ employee.empNo }}</span></td>
-                            <td><span>{{ employee.firstName }}</span></td>
-                            <td><span>{{ employee.lastName }}</span></td>
-                            <td><span>{{ employee.birthDate }}</span></td>
+                        <tr *ngFor="let department of departments">
+                            <td><span>{{ department.deptNo }}</span></td>
+                            <td><span>{{ department.deptName }}</span></td>
                             <td>
-                                <button type="button" class="btn btn-success custom-width"> Edit </button>
+                                <button type="button" class="btn btn-success custom-width" (click)="editDepartment($event)"> Edit </button>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-danger custom-width">Remove</button>
+                                <button type="button" class="btn btn-danger custom-width" (click)="removeDepartment($event)">Remove</button>
                             </td>
                         </tr>
                     </tbody>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../model/employee';
-import { EmployeeService } from '../service/employee.service';
+import { Employee } from '../../model/employee';
+import { EmployeeService } from '../../service/employee.service';
 
 @Component({
     selector: 'app-employee-list',
@@ -18,5 +18,13 @@ export class EmployeeListComponent implements OnInit {
         this.employeeService.findAll().subscribe(data => {
             this.employees = data;
         });
+    }
+
+    editEmployee(event) {
+        console.log('edit employee details');
+    }
+
+    removeEmployee(event) {
+        console.log(event);
     }
 }

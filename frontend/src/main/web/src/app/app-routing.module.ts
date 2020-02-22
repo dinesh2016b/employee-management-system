@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EmployeeComponent } from './employee/employee.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
-import { DepartmentComponent } from './department/department.component';
-import { DepartmentListComponent } from './department-list/department-list.component';
-import { DepartmentDetailsComponent } from './department-details/department-details.component';
-import { SalariesComponent } from './salaries/salaries.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EmployeeComponent } from './component/employee/employee.component';
+import { EmployeeListComponent } from './component/employee-list/employee-list.component';
+import { DepartmentComponent } from './component/department/department.component';
+import { DepartmentListComponent } from './component/department-list/department-list.component';
+import { DepartmentDetailsComponent } from './component/department-details/department-details.component';
+import { SalariesComponent } from './component/salaries/salaries.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/employees', pathMatch: 'full' },
