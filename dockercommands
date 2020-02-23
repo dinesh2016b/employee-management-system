@@ -6,12 +6,11 @@ docker-compose -f "docker-compose.yml" build employee-nginx
 
 #
 docker-compose -f "docker-compose.yml" restart employee-management-system-service
+docker-compose -f "docker-compose.yml" restart employee-mysqldb
+docker-compose -f "docker-compose.yml" restart employee-nginx
 
 #
 docker-compose -f "docker-compose.yml" up -d --build
-
-#
-docker-compose -f "docker-compose.yml" restart employee-mysqldb
 
 # clean up the data of a particular docker-compose stack
 docker-compose down -v --rmi all --remove-orphans
@@ -21,3 +20,9 @@ docker system prune
 
 #
 docker image prune
+
+# git commands
+
+git diff --staged
+git diff --cached
+git diff --name-only --cached

@@ -6,7 +6,6 @@ import { AppRoutingModule, RoutingComponent } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { EmployeeDetailsComponent } from './component/employees/employee-details/employee-details.component';
-import { DepartmentComponent } from './component/departments/department/department.component';
 import { EmployeeListComponent } from './component/employees/employee-list/employee-list.component';
 import { DepartmentDetailsComponent } from './component/departments/department-details/department-details.component';
 import { SalariesComponent } from './component/salaries/salaries.component';
@@ -16,19 +15,20 @@ import { EmployeeService } from './service/employee.service';
 import { DepartmentService } from './service/department.service';
 import { SalariesService } from './service/salaries.service';
 import { LoginComponent } from './component/login/login.component';
+import { DepartmentEmployeeListComponent } from './component/departments/department-employee-list/department-employee-list.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         EmployeeDetailsComponent,
-        DepartmentComponent,
         RoutingComponent,
         PageNotFoundComponent,
         DepartmentDetailsComponent,
         EmployeeListComponent,
         SalariesComponent,
         EmployeeDetailsComponent,
-        LoginComponent
+        LoginComponent,
+        DepartmentEmployeeListComponent
     ],
     imports: [
         BrowserModule,
