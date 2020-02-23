@@ -1,6 +1,7 @@
-frontend/src/main/web/node/*
-frontend/src/main/web/e2e/*
-frontend/src/main/web/dist/*
+frontend/node_modules/*
+frontend/node/*
+frontend/e2e/*
+frontend/dist/*
 .classpath
 .project
 .settings/

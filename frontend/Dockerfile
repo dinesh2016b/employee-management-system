@@ -12,6 +12,6 @@ FROM nginx:1.13.3-alpine
 RUN rm -rf /usr/share/nginx/html/*
 ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
 
-COPY frontend/src/main/web/dist/app /usr/share/nginx/html
+COPY frontend/dist/app /usr/share/nginx/html
 
 CMD ["nginx", "-g", "daemon off;"]
