@@ -1,6 +1,8 @@
 
 # Buils single service from mutiple services
 docker-compose -f "docker-compose.yml" build employee-management-system-service
+docker-compose -f "docker-compose.yml" build employee-mysqldb
+docker-compose -f "docker-compose.yml" build employee-nginx
 
 #
 docker-compose -f "docker-compose.yml" restart employee-management-system-service
