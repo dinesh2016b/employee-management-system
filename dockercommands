@@ -26,3 +26,27 @@ docker image prune
 git diff --staged
 git diff --cached
 git diff --name-only --cached
+
+
+------------------
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Edit Employee</mat-card-title>
+    </mat-card-header>
+
+    <form>
+        <!-- Form fields -->
+        <h1 mat-dialog-title>Message</h1>
+        <mat-dialog-content>
+
+
+        </mat-dialog-content>
+    </form>
+    <mat-card-actions>
+        <button mat-raised-button (click)="closeMe()">Close</button>
+    </mat-card-actions>
+    <mat-card-actions>
+        <button mat-raised-button (click)="test()" color="primary">Login</button>
+    </mat-card-actions>
+</mat-card>

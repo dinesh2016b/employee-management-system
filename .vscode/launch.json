@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EmployeeManagementSystemApplication<ems-backend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.online.ems.EmployeeManagementSystemApplication",
+            "projectName": "ems-backend",
+            "args": ""
+        }
+    ]
+}

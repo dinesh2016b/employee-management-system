@@ -50,3 +50,6 @@ container {
 	display: grid;
     grid-template-columns: 1fr 1fr 1fr; 
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
