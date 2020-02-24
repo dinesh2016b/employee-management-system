@@ -23,6 +23,6 @@ export class EmployeeService {
     }
 
     public save(employee: Employee) {
-        return this.http.post<Employee>(this.employeeUrl, employee);
+        return this.http.post<Employee>(this.employeeUrl+ 'employees', employee);
     }
 }

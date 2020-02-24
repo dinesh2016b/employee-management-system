@@ -27,6 +27,9 @@ export class EmployeeListComponent implements OnInit {
         console.log('------> employee' + employee.empNo);
         const modalRef = this.modalService.open(EmployeeDetailsComponent);
         modalRef.componentInstance.employee = employee;
+        modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
+            console.log(receivedEntry);
+        })
     }
 
     removeEmployee(event) {
