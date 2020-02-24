@@ -14,7 +14,7 @@ export class EmployeeDetailsComponent implements OnInit {
   @Input() public employee: Employee;
   @Output() passEntry: EventEmitter<any> = new EventEmitter();
 
-  constructor(private activeModal: NgbActiveModal, private employeeService: EmployeeService) { }
+  constructor(public activeModal: NgbActiveModal, private employeeService: EmployeeService) { }
 
   public closeMe() {
     this.activeModal.close(this.employee);
