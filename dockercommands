@@ -1,15 +1,20 @@
 
-# Buils single service from mutiple services
+# Build single service from mutiple services
 docker-compose -f "docker-compose.yml" build employee-management-system-service
 docker-compose -f "docker-compose.yml" build employee-mysqldb
 docker-compose -f "docker-compose.yml" build employee-nginx
 
-#
+# Up service
+docker-compose -f "docker-compose.yml" up -d employee-mysqldb
+docker-compose -f "docker-compose.yml" up -d employee-management-system-service
+docker-compose -f "docker-compose.yml" up -d employee-nginx
+
+# Restart service
 docker-compose -f "docker-compose.yml" restart employee-management-system-service
 docker-compose -f "docker-compose.yml" restart employee-mysqldb
 docker-compose -f "docker-compose.yml" restart employee-nginx
 
-#
+# Build service
 docker-compose -f "docker-compose.yml" up -d --build
 
 # clean up the data of a particular docker-compose stack
@@ -26,27 +31,3 @@ docker image prune
 git diff --staged
 git diff --cached
 git diff --name-only --cached
-
-
-------------------
-
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Edit Employee</mat-card-title>
-    </mat-card-header>
-
-    <form>
-        <!-- Form fields -->
-        <h1 mat-dialog-title>Message</h1>
-        <mat-dialog-content>
-
-
-        </mat-dialog-content>
-    </form>
-    <mat-card-actions>
-        <button mat-raised-button (click)="closeMe()">Close</button>
-    </mat-card-actions>
-    <mat-card-actions>
-        <button mat-raised-button (click)="test()" color="primary">Login</button>
-    </mat-card-actions>
-</mat-card>

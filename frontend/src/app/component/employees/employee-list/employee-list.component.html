@@ -20,13 +20,17 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let employee of employees">
-                            <td><span>{{ employee.empNo }}</span></td>
-                            <td><span>{{ employee.firstName }}</span></td>
-                            <td><span>{{ employee.lastName }}</span></td>
-                            <td><span>{{ employee.birthDate }}</span></td>
+                            <td><span>{{ employee.empNo }}</span><input type="hidden" value="{{ employee.empNo }}"
+                                    #empNo></td>
+                            <td><span>{{ employee.firstName }}</span><input type="hidden"
+                                    value="{{ employee.firstName }}" #firstName></td>
+                            <td><span>{{ employee.lastName }}</span><input type="hidden" value="{{ employee.lastName }}"
+                                    #lastName></td>
+                            <td><span>{{ employee.birthDate }}</span><input type="hidden"
+                                    value="{{ employee.birthDate }}" #birthDate></td>
                             <td>
                                 <button type="button" class="btn btn-success custom-width"
-                                    (click)="editEmployee($event)"> Edit </button>
+                                    (click)="editEmployee(employee)"> Edit </button>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger custom-width"

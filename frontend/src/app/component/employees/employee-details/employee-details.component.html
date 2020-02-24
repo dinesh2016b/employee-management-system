@@ -12,42 +12,42 @@
                 <div class="form-group">
                     <label class="control-label col-m-10" for="address">EmpNo: </label>
                     <div class="col-m-10">
-                        <input type="text" class="form-control" name="address" [(ngModel)]="model.empNo"
+                        <input type="text" class="form-control" name="empNo" [(ngModel)]="employee.empNo"
                             placeholder="" />
                     </div>
                 </div>
                 <div class=" form-group">
-                    <label class="control-label col-m-10" for="city">First Name: </label>
+                    <label class="control-label col-m-10" for="firstName">First Name: </label>
                     <div class="col-m-10">
-                        <input type="text" class="form-control" name="city" [(ngModel)]="model.firstName"
+                        <input type="text" class="form-control" name="firstName" [(ngModel)]="employee.firstName"
+                            placeholder="" />
+                    </div>
+                </div>
+                <div class=" form-group">
+                    <label class="control-label col-m-10" for="lastName">Last Name: </label>
+                    <div class="col-m-10">
+                        <input type="text" class="form-control" name="lastName" [(ngModel)]="employee.lastName"
                             placeholder="" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-m-10" for="state">Last Name: </label>
+                    <label class="control-label col-m-10" for="birthDate">Birth Date: </label>
                     <div class="col-m-10">
-                        <input type="text" class="form-control" name="state" [(ngModel)]="model.lastName"
-                            placeholder="" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-m-10" for="country">Birth Date: </label>
-                    <div class="col-m-10">
-                        <input type="text" class="form-control" name="country" [(ngModel)]="model.birthDate"
+                        <input type="text" class="form-control" name="birthDate" [(ngModel)]="employee.birthDate"
                             placeholder="" />
                     </div>
                 </div>
                 <br />
                 <div class="form-group">
                     <div class="col-m-offset-2 col-m-4">
-                        <button type="submit" class="btn  btn-primary" name="signup">
+                        <button type="submit" class="btn  btn-primary" name="Update">
                             Update
                         </button>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-m-offset-2 col-m-4">
-                        <button type="submit" class="btn  btn-primary" name="signup">
+                        <button type="submit" class="btn" name="close">
                             Close
                         </button>
                     </div>

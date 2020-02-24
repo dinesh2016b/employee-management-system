@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Employee } from '../../../model/employee';
 import { EmployeeService } from '../../../service/employee.service';
@@ -15,7 +15,7 @@ export class EmployeeListComponent implements OnInit {
 
     employees: Employee[];
 
-    constructor(private dialog: MatDialog, private employeeService: EmployeeService) { }
+    constructor(private modalService: NgbModal, private employeeService: EmployeeService) { }
 
     ngOnInit() {
         this.employeeService.findAll().subscribe(data => {
@@ -23,14 +23,10 @@ export class EmployeeListComponent implements OnInit {
         });
     }
 
-    editEmployee(event) {
-        console.log('edit employee details');
-
-        this.dialog.open(EmployeeDetailsComponent, {
-            data: {
-                message: "Error!!!"
-            }
-        });
+    editEmployee(employee: Employee) {
+        console.log('------> employee' + employee.empNo);
+        const modalRef = this.modalService.open(EmployeeDetailsComponent);
+        modalRef.componentInstance.employee = employee;
     }
 
     removeEmployee(event) {

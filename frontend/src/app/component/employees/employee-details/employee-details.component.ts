@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Employee } from './../../../model/employee';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-employee-details',
@@ -10,16 +9,9 @@ import { Component, OnInit } from '@angular/core';
 
 export class EmployeeDetailsComponent implements OnInit {
 
-  model: Employee = {
-    empNo: '',
-    firstName: '',
-    lastName: '',
-    birthDate: '',
-  };
+  @Input() public employee: Employee;
 
-  constructor() {
-
-  }
+  constructor() { }
 
   public closeMe() {
     //this.dialogRef.close();
@@ -28,7 +20,9 @@ export class EmployeeDetailsComponent implements OnInit {
   public updateEmployee() {
 
   }
+
   ngOnInit() {
+    console.log(this.employee);
   }
 
 }
