@@ -1,1 +1,20 @@
-<p>login works!</p>
+<div class="generic-container">
+    <div class="panel panel-default">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <span class="lead"> Login </span>
+            </div>
+            <div class="tablecontainer">
+                <div formGroupName="loginForm" (ngForm)="onSubmit()">
+                    <label>User Name
+                        <input type="text" formControlName="userName">
+                    </label>
+                    <label>Password
+                        <input type="text" formControlName="password">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,47 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap} from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DepartmentService } from './../../../service/department.service';
+import { Departments } from '../../../model/departments';
 
 @Component({
   selector: 'app-department-details',
-  template: `
-    <h3>
-      You selected department where id = {{ departmentId }}
-        Department Name = {{ departmentName }}
-      <nav>
-          <a (click)="onPrevious()">Previous</a>
-          <a (click)="onNext()">Next</a>
-      </nav>
-    </h3>
-  `,
-  styles: []
+  templateUrl: './department-details.component.html',
+  styleUrls: ['./department-details.component.css']
 })
 export class DepartmentDetailsComponent implements OnInit {
 
-  public departmentId;
-  public departmentName;
+  @Input() departments: Departments;
 
-  constructor(private activateRouter: ActivatedRoute, private router: Router) { }
-
-  ngOnInit() {
-    //let id = parseInt(this.activateRouter.snapshot.paramMap.get("id"));
-    //this.departmentId=id;
-
-    this.activateRouter.paramMap.subscribe((params: ParamMap) => {
-      let id = parseInt(params.get('id'));
-      this.departmentId = id;
-
-      let deptName = params.get('name');
-      this.departmentName = name;
-    });
+  constructor(private route: ActivatedRoute,
+    private departmentService: DepartmentService) {
+    this.departments = new Departments('D100', 'Book100');
   }
 
-  onPrevious(){
-    let previousId = this.departmentId - 1;
-    this.router.navigate(['/departments',previousId]);
+  ngOnInit(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log('-------------> DepartmentDetails :' + id);
+
+    this.getDepartmentDetails();
   }
 
-  onNext(){
-    let nextId = this.departmentId + 1;
-    this.router.navigate(['/departments',nextId]);
+  getDepartmentDetails() {
+    this.departments = new Departments('D100', 'Book100');
+    return this.departments;
+  }
+
+  goBack() {
+
+  }
+
+  save() {
+
   }
 }

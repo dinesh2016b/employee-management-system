@@ -14,17 +14,19 @@
                             <th>Department Name</th>
                             <th width="08%">Edit</th>
                             <th width="08%">Remove</th>
-                         </tr>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let department of departments">
                             <td><span>{{ department.deptNo }}</span></td>
                             <td><span>{{ department.deptName }}</span></td>
                             <td>
-                                <button type="button" class="btn btn-success custom-width" (click)="editDepartment($event)"> Edit </button>
+                                <a class="btn btn-success custom-width"
+                                    routerLink="/departments/{{ department.deptNo }}"> Edit </a>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-danger custom-width" (click)="removeDepartment($event)">Remove</button>
+                                <button type="button" class="btn btn-danger custom-width"
+                                    (click)="removeDepartment($event)">Remove</button>
                             </td>
                         </tr>
                     </tbody>
