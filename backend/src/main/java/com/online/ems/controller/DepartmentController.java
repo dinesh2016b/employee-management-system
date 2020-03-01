@@ -34,7 +34,7 @@ public class DepartmentController {
 	private DepartmentRepository departmentRepository;
 
 	@GetMapping("/departments")
-	public ResponseEntity<List<Departments>> getAllEmployees() throws Exception {
+	public ResponseEntity<List<Departments>> getAllDepartments() throws Exception {
 		logger.info("----> department list ");
 
 		List<Departments> departmentList = new ArrayList<Departments>();
@@ -45,7 +45,7 @@ public class DepartmentController {
 	}
 
 	@GetMapping("/departments/{id}")
-	public ResponseEntity<List<Departments>> getEmployeeById(@PathVariable(value = "id") Long departmentId)
+	public ResponseEntity<List<Departments>> getDepartmentsById(@PathVariable(value = "id") String departmentId)
 			throws Exception {
 		try {
 			logger.info("----> departmentId - " + departmentId);
@@ -66,7 +66,7 @@ public class DepartmentController {
 	}
 
 	@PutMapping("/departments/{deptId}")
-	public ResponseEntity<Departments> updateEmployee(@PathVariable(value = "deptId") Long departmentId,
+	public ResponseEntity<Departments> updateEmployee(@PathVariable(value = "deptId") String departmentId,
 			@Valid @RequestBody Departments employeeDetails) throws ResourceNotFoundException {
 		Departments department = departmentRepository.findById(departmentId)
 				.orElseThrow(() -> new ResourceNotFoundException("Departments not found for this deptId :: " + departmentId));
@@ -76,7 +76,7 @@ public class DepartmentController {
 	}
 
 	@DeleteMapping("/departments/{deptId}")
-	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "deptId") Long departmentId)
+	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "deptId") String departmentId)
 			throws ResourceNotFoundException {
 		Departments department = departmentRepository.findById(departmentId)
 				.orElseThrow(() -> new ResourceNotFoundException("Departments not found for this deptId :: " + departmentId));

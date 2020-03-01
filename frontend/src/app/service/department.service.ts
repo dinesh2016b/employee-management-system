@@ -12,10 +12,9 @@ export class DepartmentService {
         // this.departmentUrl = 'http://localhost:8080/departments';
     }
 
-    public findById(departmentsId): Observable<Departments[]> {
-        console.log('----> departmentsId :'+departmentsId);
+    public findById(departmentsId): Observable<Departments> {
         console.log(`${this.departmentUrl + 'departments'}/${departmentsId}`);
-        return this.http.get<Departments[]>(`${this.departmentUrl + 'departments'}/${departmentsId}`);
+        return this.http.get<Departments>(`${this.departmentUrl + 'departments'}/${departmentsId}`);
     }
 
     public findAll(): Observable<Departments[]> {
@@ -24,6 +23,7 @@ export class DepartmentService {
     }
 
     public save(department: Departments) {
+        console.log('----> departments :' + department);
         return this.http.post<Departments>(this.departmentUrl, department);
     }
 }

@@ -14,18 +14,17 @@ export class DepartmentDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private departmentService: DepartmentService) {
-    this.departments = new Departments('D100', 'Book100');
+    //this.departments = new Departments('D100', 'Book100');
   }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    console.log('-------------> DepartmentDetails :' + id);
-
     this.getDepartmentDetails();
   }
 
   getDepartmentDetails() {
-    this.departments = new Departments('D100', 'Book100');
+    // this.departments = new Departments('D100', 'Book100');
+    console.log('-------------> DepartmentDetails :' + this.route.snapshot.paramMap.get('id'));
+    this.departmentService.findById(this.route.snapshot.paramMap.get('id')).subscribe(departments => this.departments = departments);
     return this.departments;
   }
 

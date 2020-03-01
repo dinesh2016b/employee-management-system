@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.online.ems.model.Departments;
 
 @Repository
-public interface DepartmentRepository extends JpaRepository<Departments, Long> {
+public interface DepartmentRepository extends JpaRepository<Departments, String> {
 
 }
