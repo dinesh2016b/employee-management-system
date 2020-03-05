@@ -22,16 +22,15 @@ export class DepartmentDetailsComponent implements OnInit {
   }
 
   getDepartmentDetails() {
-    this.departmentsEntry.emit(this.departments);
-    console.log('-------------> DepartmentDetails Id :' + this.route.snapshot.paramMap.get('id'));
+    //console.log('-------------> DepartmentDetails Id :' + this.route.snapshot.paramMap.get('id'));
 
     //this.departments = new Departments(this.route.snapshot.paramMap.get('id'), '');
-    this.departmentService.findById(this.departments).subscribe(res => {
-      console.log('-------> departments.deptNo      ----> ' + this.departments.deptNo);
-      console.log('-------> departments.deptName  ----> ' + this.departments.deptName);
 
-    });
+    this.departmentsEntry.emit(this.departments);
+    this.departmentService.findById(this.route.snapshot.paramMap.get('id')).subscribe(departments => this.departments = this.departments);
 
+    console.log('-------> departments.deptNo      ----> ' + this.departments.deptNo);
+    console.log('-------> departments.deptName  ----> ' + this.departments.deptName);
 
     //(departments => this.departments = departments);
     console.log('-------------> DepartmentDetails :' + this.departments);
