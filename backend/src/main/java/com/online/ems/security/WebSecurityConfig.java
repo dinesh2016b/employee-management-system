@@ -1,4 +1,4 @@
-package com.online.ems;
+package com.online.ems.security;
 
 import java.util.Arrays;
 
@@ -13,6 +13,14 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		
+		http.cors().and().csrf().disable();
+		
+	}
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
