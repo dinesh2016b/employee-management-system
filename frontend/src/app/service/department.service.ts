@@ -14,16 +14,21 @@ export class DepartmentService {
 
     public findById(departmentsId): Observable<Departments> {
         console.log(`${this.departmentUrl + 'departments'}/${departmentsId}`);
-        return this.http.get<Departments>(`${this.departmentUrl + 'departments'}/${departmentsId}`);
+        return this.http.get<Departments>((`${this.departmentUrl + 'departments'}/${departmentsId}`),{ headers: { authorization: this.createBasicAuthToken("dinesh", "dinesh") }});
     }
 
     public findAll(): Observable<Departments[]> {
         console.log('----> departments');
-        return this.http.get<Departments[]>(this.departmentUrl + 'departments');
+        return this.http.get<Departments[]>((this.departmentUrl + 'departments'), { headers: { authorization: this.createBasicAuthToken("dinesh", "dinesh") }});
     }
 
     public save(department: Departments) {
         console.log('----> departments :' + department);
         return this.http.post<Departments>(this.departmentUrl, department);
+    }
+
+
+    createBasicAuthToken(username: String, password: String) {
+        return 'Basic ' + window.btoa(username + ":" + password)
     }
 }
