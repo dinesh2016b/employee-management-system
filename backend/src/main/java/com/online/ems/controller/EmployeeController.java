@@ -1,5 +1,6 @@
 package com.online.ems.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +35,7 @@ public class EmployeeController {
 	private EmployeeRepository employeeRepository;
 
 	@GetMapping("/employees")
-	public ResponseEntity<List<Employees>> getAllEmployees() throws Exception {
+	public ResponseEntity<List<Employees>> getAllEmployees(Principal principal) throws Exception {
 		System.out.println("----> employeeId - List ");
 		
 		//return ResponseEntity.ok().body(employeeRepository.findAll());
@@ -48,6 +49,9 @@ public class EmployeeController {
 			list.add(employee);
 		}
 
+		
+		System.out.println("------------------>>> You are logged in as " + principal.getName());
+		System.out.println("------------------>>> You are logged in as " + principal.toString());
 		return ResponseEntity.ok().body(list);	
 	}
 
