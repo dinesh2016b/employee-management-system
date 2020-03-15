@@ -31,3 +31,5 @@ docker image prune
 git diff --staged
 git diff --cached
 git diff --name-only --cached
+
+ng serve --port=8080 --ssl
