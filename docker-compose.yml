@@ -14,14 +14,54 @@ services:
     volumes:
       - employee-mysql-volumes:/var/lib/mysql
 
-  employee-management-system-service:
-    image: dinesh2016b/employee-management-system
-    container_name: employee-management-system-service
+  employee-h2db:
+    container_name: employee-h2db
     build:
         context: .
-        dockerfile: ./backend/Dockerfile
+        dockerfile: ./db-h2-service/Dockerfile
     ports:
-      - 8090:8090
+      - 3307:3307
+    expose:
+      - 3307
+    networks:
+     - employee-networks
+    volumes:
+      - employee-h2-volumes:/var/lib/h2
+
+  backend-employee-service:
+    image: dinesh2016b/employee-management-system
+    container_name: backend-employee-service
+    build:
+        context: .
+        dockerfile: ./backend-employee-service/Dockerfile
+    ports:
+      - 8091:8091
+    networks:
+      - employee-networks
+    depends_on:
+      - employee-mysqldb
+
+  backend-department-service:
+    image: dinesh2016b/employee-management-system
+    container_name: backend-department-service
+    build:
+        context: .
+        dockerfile: ./backend-department-service/Dockerfile
+    ports:
+      - 8092:8092
+    networks:
+      - employee-networks
+    depends_on:
+      - employee-mysqldb
+
+  backend-salaries-service:
+    image: dinesh2016b/employee-management-system
+    container_name: backend-salaries-service
+    build:
+        context: .
+        dockerfile: ./backend-salaries-service/Dockerfile
+    ports:
+      - 8093:8093
     networks:
       - employee-networks
     depends_on:

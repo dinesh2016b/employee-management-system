@@ -11,4 +11,4 @@ ENV MYSQL_ROOT_PASSWORD Dinesh@123
 # All scripts in docker-entrypoint-initdb.d/ are automatically
 # executed during container startup
 
-COPY db/sql-scripts/ /docker-entrypoint-initdb.d/
+COPY db-mysql-service/sql-scripts/ /docker-entrypoint-initdb.d/

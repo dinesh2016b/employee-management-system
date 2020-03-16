@@ -7,7 +7,7 @@ import { Salaries } from '../model/salaries';
 
 export class SalariesService {
 
-  private salariesUrl: string = 'https://localhost:8443/';
+  private salariesUrl: string = 'https://localhost:8093/';
 
   constructor(private http: HttpClient) {
 
