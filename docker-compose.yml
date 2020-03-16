@@ -14,20 +14,6 @@ services:
     volumes:
       - employee-mysql-volumes:/var/lib/mysql
 
-  employee-h2db:
-    container_name: employee-h2db
-    build:
-        context: .
-        dockerfile: ./db-h2-service/Dockerfile
-    ports:
-      - 3307:3307
-    expose:
-      - 3307
-    networks:
-     - employee-networks
-    volumes:
-      - employee-h2-volumes:/var/lib/h2
-
   backend-employee-service:
     image: dinesh2016b/employee-management-system
     container_name: backend-employee-service
