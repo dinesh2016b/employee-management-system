@@ -5,10 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @RestController
 @EnableAutoConfiguration
 @SpringBootApplication
+@EnableEurekaClient
 public class SalariesEMSApplication extends SpringBootServletInitializer {
 
 	// start everything
