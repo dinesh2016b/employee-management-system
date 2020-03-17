@@ -4,7 +4,7 @@ services:
     container_name: employee-mysqldb
     build:
         context: .
-        dockerfile: ./db/Dockerfile
+        dockerfile: ./db-mysql-service/Dockerfile
     ports:
       - 3306:3306
     expose:
