@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,50 +22,61 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
 import com.online.ems.dao.EmployeeRepositoryDAO;
 import com.online.ems.exception.ResourceNotFoundException;
 import com.online.ems.model.Employees;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "https://localhost:8080")
 public class EmployeeController {
-	
-	private Logger logger = LoggerFactory.getLogger(EmployeeController.class);	
+
+	private Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
 	@Autowired
 	private EmployeeRepositoryDAO employeeRepository;
 
 	@GetMapping("/employees")
-	public ResponseEntity<List<Employees>> getAllEmployees(Principal principal) throws Exception {
-		System.out.println("----> employeeId - List ");
-		
-		//return ResponseEntity.ok().body(employeeRepository.findAll());
+	public ResponseEntity<List<Resource<Employees>>> getAllEmployees(Principal principal) throws Exception {
+		logger.info("----> employeeId - List ");
+
+		// return ResponseEntity.ok().body(employeeRepository.findAll());
 
 		Employees employee = null;
-		List<Employees> list = new ArrayList<Employees>();
-		
-		for (int i= 10001; i < 10021; i++){
-			employee = employeeRepository.findById((long) i).orElseThrow(
-					() -> new Exception("Employees not found for this empNo :: "));
-			list.add(employee);
+		Resource<Employees> employesResource = null;
+		List<Resource<Employees>> list = new ArrayList<Resource<Employees>>();
+
+		for (int i = 10001; i < 10021; i++) {
+			employee = employeeRepository.findById((long) i)
+					.orElseThrow(() -> new Exception("Employees not found for this empNo :: "));
+
+			employesResource = new Resource<Employees>(employee);
+			employesResource.add(
+					linkTo(methodOn(EmployeeController.class).getEmployeeById(employee.getEmpNo())).withRel("_self"));
+
+			list.add(employesResource);
 		}
 
-		
-		System.out.println("------------------>>> You are logged in as " + principal.getName());
-		System.out.println("------------------>>> You are logged in as " + principal.toString());
-		return ResponseEntity.ok().body(list);	
+		logger.info(
+				"------------------>>> You are logged in as :" + principal.getName() + " : " + principal.toString());
+		return ResponseEntity.ok().body(list);
 	}
 
 	@GetMapping("/employees/{id}")
-	public ResponseEntity<List<Employees>> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+	public ResponseEntity<Resource<Employees>> getEmployeeById(@PathVariable(value = "id") Long employeeId)
 			throws Exception {
 		try {
-			System.out.println("----> employeeId - " + employeeId);
-			Employees employee = employeeRepository.findById(employeeId).orElseThrow(
-					() -> new Exception("Employees not found for this empNo :: " + employeeId));
-			List<Employees> list = new ArrayList<Employees>();
-			list.add(employee);
-			return ResponseEntity.ok().body(list);
+
+			logger.info("----> employeeId - " + employeeId);
+			Employees employee = employeeRepository.findById(employeeId)
+					.orElseThrow(() -> new Exception("Employees not found for this empNo :: " + employeeId));
+
+			Resource<Employees> employesResource = new Resource<Employees>(employee);
+			employesResource.add(linkTo(methodOn(EmployeeController.class).getAllEmployees(null)).withRel("_self"));
+
+			return ResponseEntity.ok().body(employesResource);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -72,15 +84,19 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/employees")
-	public Employees createEmployee(@Valid @RequestBody Employees employee) {
-		return employeeRepository.save(employee);
+	public ResponseEntity<Employees> createEmployee(@Valid @RequestBody Employees employee) {
+		logger.info("------------------>>> createEmployee() :"+employee.toString());
+		logger.info("------------------>>> "+employeeRepository.save(employee));
+		return ResponseEntity.ok(employee);
 	}
 
 	@PutMapping("/employees/{empNo}")
 	public ResponseEntity<Employees> updateEmployee(@PathVariable(value = "empNo") Long employeeId,
 			@Valid @RequestBody Employees employeeDetails) throws ResourceNotFoundException {
-		Employees employee = employeeRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Employees not found for this empNo :: " + employeeId));
+
+		logger.info("------------------>>> updateEmployee()");
+		Employees employee = employeeRepository.findById(employeeId).orElseThrow(
+				() -> new ResourceNotFoundException("Employees not found for this empNo :: " + employeeId));
 
 		employee.setBirthDate(employeeDetails.getBirthDate());
 		employee.setLastName(employeeDetails.getLastName());
@@ -92,8 +108,10 @@ public class EmployeeController {
 	@DeleteMapping("/employees/{empNo}")
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "empNo") Long employeeId)
 			throws ResourceNotFoundException {
-		Employees employee = employeeRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Employees not found for this empNo :: " + employeeId));
+
+		logger.info("------------------>>> deleteEmployee()");
+		Employees employee = employeeRepository.findById(employeeId).orElseThrow(
+				() -> new ResourceNotFoundException("Employees not found for this empNo :: " + employeeId));
 
 		employeeRepository.delete(employee);
 		Map<String, Boolean> response = new HashMap<>();
