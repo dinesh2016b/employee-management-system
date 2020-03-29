@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +21,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.online.ems.bean.DepartmentsBean;
 import com.online.ems.bean.EmployeesBean;
 import com.online.ems.service.EmployeeService;
 
@@ -35,6 +39,9 @@ public class EmployeesController {
 
 	@Autowired
 	private EmployeeService employeeService;
+
+	@Autowired
+	private RestTemplate restTemplate;
 
 	@GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Resource<EmployeesBean>>> getEmployees() throws Exception {
@@ -68,10 +75,28 @@ public class EmployeesController {
 	public ResponseEntity<Resource<EmployeesBean>> getEmployeeById(@PathVariable(value = "id") Long employeeId)
 			throws Exception {
 
-		EmployeesBean employeesBean = employeeService.getEmployeesById(employeeId);
+		Resource<EmployeesBean> employesResource = null;
+		try {
 
-		Resource<EmployeesBean> employesResource = new Resource<EmployeesBean>(employeesBean);
-		employesResource.add(linkTo(methodOn(EmployeesController.class).getEmployees()).withRel("_self"));
+			restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("dinesh", "dinesh"));
+			DepartmentsBean departmentsBean = (DepartmentsBean) restTemplate
+					.getForObject("http://localhost:8091/departments/1002", DepartmentsBean.class);
+
+			logger.info("---------> Departments :" + departmentsBean);
+
+			EmployeesBean employeesBean = employeeService.getEmployeesById(employeeId);
+			employeesBean.setDepartmentList(departmentsBean.getDepartmentList());
+
+			employesResource = new Resource<EmployeesBean>(employeesBean);
+			employesResource.add(linkTo(methodOn(EmployeesController.class).getEmployees()).withRel("_self"));
+
+		} catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return ResponseEntity.ok().body(employesResource);
 	}
@@ -80,8 +105,8 @@ public class EmployeesController {
 	public ResponseEntity<Resource<EmployeesBean>> addEmployee(@RequestBody EmployeesBean employeesBean)
 			throws Exception {
 
-		logger.debug("--------> addEmployee() :" + employeesBean.toString()); 
-		
+		logger.debug("--------> addEmployee() :" + employeesBean.toString());
+
 		try {
 			employeeService.addEmployee(employeesBean);
 		} catch (Exception e) {

@@ -1,5 +1,6 @@
 package com.online.ems.controller;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,72 +20,121 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.online.ems.bean.DepartmentsBean;
 import com.online.ems.dao.DepartmentRepositoryDAO;
 import com.online.ems.exception.ResourceNotFoundException;
 import com.online.ems.model.Departments;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
+@RequestMapping(path = "/departments")
 public class DepartmentController {
-	
-	private Logger logger = LoggerFactory.getLogger(DepartmentController.class);	
+
+	private Logger logger = LoggerFactory.getLogger(DepartmentController.class);
 
 	@Autowired
 	private DepartmentRepositoryDAO departmentRepository;
 
-	@GetMapping("/departments")
-	public ResponseEntity<List<Departments>> getAllDepartments() throws Exception {
-		logger.info("----> department list ");
+	@GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<DepartmentsBean> getAllDepartments() throws Exception {
+		try {
+			logger.info("----> department list ");
 
-		List<Departments> departmentList = new ArrayList<Departments>();
-				
-		departmentList = departmentRepository.findAll();
-		
-		return ResponseEntity.ok().body(departmentList);	
+			List<Departments> departmentList = departmentRepository.findAll();
+
+			DepartmentsBean departmentsBean = new DepartmentsBean();
+
+			departmentsBean.setDepartmentList(departmentList);
+
+			return ResponseEntity.ok().body(departmentsBean);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
-	@GetMapping("/departments/{id}")
-	public ResponseEntity<List<Departments>> getDepartmentsById(@PathVariable(value = "id") String departmentId)
+	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<DepartmentsBean> getDepartmentsById(@PathVariable(value = "id") String departmentId)
 			throws Exception {
+
 		try {
+
 			logger.info("----> departmentId - " + departmentId);
-			Departments department = departmentRepository.findById(departmentId).orElseThrow(
-					() -> new Exception("Departments not found for this deptId :: " + departmentId));
-			List<Departments> list = new ArrayList<Departments>();
-			list.add(department);
-			return ResponseEntity.ok().body(list);
+			Departments department = departmentRepository.findById(departmentId)
+					.orElseThrow(() -> new Exception("Departments not found for this deptId :: " + departmentId));
+			List<Departments> departmentList = new ArrayList<Departments>();
+			departmentList.add(department);
+
+			DepartmentsBean departmentsBean = new DepartmentsBean();
+			departmentsBean.setDepartmentList(departmentList);
+
+			return ResponseEntity.ok().body(departmentsBean);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		}
 	}
 
-	@PostMapping("/departments")
-	public Departments createEmployee(@Valid @RequestBody Departments department) {
-		return departmentRepository.save(department);
+	@PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Departments> createDepartment(@Valid @RequestBody Departments department) throws Exception {
+
+		try {
+			departmentRepository.save(department);
+			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+					.buildAndExpand(department.getDeptNo()).toUri();
+
+			return ResponseEntity.created(location).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+
 	}
 
-	@PutMapping("/departments/{deptId}")
+	@PutMapping(path = "/{deptId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Departments> updateEmployee(@PathVariable(value = "deptId") String departmentId,
 			@Valid @RequestBody Departments employeeDetails) throws ResourceNotFoundException {
-		Departments department = departmentRepository.findById(departmentId)
-				.orElseThrow(() -> new ResourceNotFoundException("Departments not found for this deptId :: " + departmentId));
 
-		final Departments updatedEmployee = departmentRepository.save(department);
-		return ResponseEntity.ok(updatedEmployee);
+		try {
+		
+			Departments department = departmentRepository.findById(departmentId).orElseThrow(
+					() -> new ResourceNotFoundException("Departments not found for this deptId :: " + departmentId));
+
+			final Departments updatedDepartment = departmentRepository.save(department);
+
+			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+					.buildAndExpand(updatedDepartment.getDeptNo()).toUri();
+
+			return ResponseEntity.created(location).build();
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
+
 	}
 
-	@DeleteMapping("/departments/{deptId}")
+	@DeleteMapping(path = "/{deptId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "deptId") String departmentId)
 			throws ResourceNotFoundException {
-		Departments department = departmentRepository.findById(departmentId)
-				.orElseThrow(() -> new ResourceNotFoundException("Departments not found for this deptId :: " + departmentId));
 
-		departmentRepository.delete(department);
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("deleted", Boolean.TRUE);
-		return response;
+		try {
+			Departments department = departmentRepository.findById(departmentId).orElseThrow(
+					() -> new ResourceNotFoundException("Departments not found for this deptId :: " + departmentId));
+
+			departmentRepository.delete(department);
+			Map<String, Boolean> response = new HashMap<>();
+			response.put("deleted", Boolean.TRUE);
+			return response;
+		} catch (ResourceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
 	}
 }

@@ -1,11 +1,17 @@
 package com.online.ems.bean;
 
+import java.util.List;
+
+import com.online.ems.model.Departments;
+
 public class EmployeesBean {
 
 	private long empNo;
 	private String firstName;
 	private String lastName;
 	private String birthDate;
+	
+	private List<Departments> departmentList;
 
 	public long getEmpNo() {
 		return empNo;
@@ -37,6 +43,14 @@ public class EmployeesBean {
 
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public List<Departments> getDepartmentList() {
+		return departmentList;
+	}
+
+	public void setDepartmentList(List<Departments> departmentList) {
+		this.departmentList = departmentList;
 	}
 
 	@Override

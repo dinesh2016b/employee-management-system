@@ -1,11 +1,14 @@
 package com.online.ems;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @EnableAutoConfiguration
@@ -13,11 +16,26 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableEurekaClient
 public class EmployeeEMSApplication extends SpringBootServletInitializer {
 
+	/*
+	 * static { //for localhost testing only
+	 * javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier( new
+	 * javax.net.ssl.HostnameVerifier(){
+	 * 
+	 * public boolean verify(String hostname, javax.net.ssl.SSLSession sslSession) {
+	 * if (hostname.equals("localhost")) { return true; } return false; } }); }
+	 */
+	
+	@Bean
+	//@LoadBalanced
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	};
+
 	// start everything
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeEMSApplication.class, args);
 	}
-
+	
 // run this only on profile 'demo', avoid run this in test
 	/*
 	 * @Profile("demo")
