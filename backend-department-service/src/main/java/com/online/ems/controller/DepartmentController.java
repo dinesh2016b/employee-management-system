@@ -80,7 +80,7 @@ public class DepartmentController {
 		}
 	}
 
-	@PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Departments> createDepartment(@Valid @RequestBody Departments department) throws Exception {
 
 		try {

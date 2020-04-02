@@ -27,6 +27,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.online.ems.bean.DepartmentsBean;
 import com.online.ems.bean.EmployeesBean;
+import com.online.ems.exception.EMSExceptionHandler;
 import com.online.ems.service.EmployeeService;
 
 @RestController
@@ -72,7 +73,7 @@ public class EmployeesController {
 	}
 
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Resource<EmployeesBean>> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+	public Resource<EmployeesBean> getEmployeeById(@PathVariable(value = "id") Long employeeId)
 			throws Exception {
 
 		Resource<EmployeesBean> employesResource = null;
@@ -90,18 +91,21 @@ public class EmployeesController {
 			employesResource = new Resource<EmployeesBean>(employeesBean);
 			employesResource.add(linkTo(methodOn(EmployeesController.class).getEmployees()).withRel("_self"));
 
+			return employesResource;
+
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw e;
 		}
-
-		return ResponseEntity.ok().body(employesResource);
+		
+		return null;
 	}
 
-	@PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/",  produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Resource<EmployeesBean>> addEmployee(@RequestBody EmployeesBean employeesBean)
 			throws Exception {
 
