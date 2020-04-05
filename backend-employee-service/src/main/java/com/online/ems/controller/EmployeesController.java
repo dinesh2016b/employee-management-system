@@ -43,7 +43,7 @@ public class EmployeesController {
 	private RestTemplate restTemplate;
 
 	@GetMapping(path = "/pageNo/{pageNo}/size/{size}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Resource<EmployeesBean>>> getEmployees(@PathVariable(value = "pageNo") int pageNo,
+	public List<Resource<EmployeesBean>> getEmployees(@PathVariable(value = "pageNo") int pageNo,
 			@PathVariable(value = "size") int size) throws Exception {
 
 		logger.info("------------> getEmployees()");
@@ -68,7 +68,7 @@ public class EmployeesController {
 			logger.error(e.getMessage());
 		}
 
-		return ResponseEntity.ok().body(employeesResourceList);
+		return employeesResourceList;
 	}
 
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -81,16 +81,15 @@ public class EmployeesController {
 			DepartmentsBean departmentsBean = (DepartmentsBean) restTemplate
 					.getForObject("http://localhost:8091/departments/1002", DepartmentsBean.class);
 
-			logger.info("---------> Departments :" + departmentsBean);
+			logger.debug("---------> Departments :" + departmentsBean);
 
 			EmployeesBean employeesBean = employeeService.getEmployeesById(employeeId);
-			employeesBean.setDepartmentList(departmentsBean.getDepartmentList());
+			employeesBean.setDepartmentsBean(departmentsBean);
 
 			employesResource = new Resource<EmployeesBean>(employeesBean);
 			employesResource.add(linkTo(methodOn(EmployeesController.class).getEmployees(0, 10)).withRel("_self"));
 
 			return employesResource;
-
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,11 +1,13 @@
 package com.online.ems.service;
 
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.online.ems.bean.SalariesBean;
 
-@FeignClient(name = "backend-salaries-service")
+@FeignClient(name = "backend-salaries-service", url = "localhost:8093")
+@RibbonClient(name = "backend-salaries-service")
 public interface SalariesServiceProxy {
 
 	@GetMapping(path = "/salaries")

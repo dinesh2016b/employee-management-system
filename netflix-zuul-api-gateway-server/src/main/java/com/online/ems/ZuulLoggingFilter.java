@@ -1,4 +1,4 @@
-package com.in28minutes.microservices.netflixzuulapigatewayserver;
+package com.online.ems;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
 @Component
-public class ZuulLoggingFilter extends ZuulFilter{
+public class ZuulLoggingFilter extends ZuulFilter {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -21,10 +21,8 @@ public class ZuulLoggingFilter extends ZuulFilter{
 
 	@Override
 	public Object run() {
-		HttpServletRequest request = 
-				RequestContext.getCurrentContext().getRequest();
-		logger.info("request -> {} request uri -> {}", 
-				request, request.getRequestURI());
+		HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
+		logger.info("request -> {} request uri -> {}", request, request.getRequestURI());
 		return null;
 	}
 

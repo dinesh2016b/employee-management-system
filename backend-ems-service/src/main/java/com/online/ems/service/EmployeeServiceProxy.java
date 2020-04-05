@@ -16,13 +16,13 @@ import com.online.ems.bean.EmployeesBean;
 @RibbonClient(name = "backend-employee-service")
 public interface EmployeeServiceProxy {
 
-	@GetMapping(path = "/backend-employee-service/employees/pageNo/{pageNo}/size/{size}")
+	@GetMapping(path = "/employees/pageNo/{pageNo}/size/{size}")
 	public List<Resource<EmployeesBean>> getEmployees(@PathVariable(value = "pageNo") int pageNo,
 			@PathVariable(value = "size") int size) throws Exception;
 
-	@GetMapping(path = "/backend-employee-service/employees/{id}")
+	@GetMapping(path = "/employees/{id}")
 	public Resource<EmployeesBean> getEmployeeById(@PathVariable(value = "id") Long employeeId) throws Exception;
 
-	@PostMapping(path = "/backend-employee-service/employees")
+	@PostMapping(path = "/employees")
 	public Resource<EmployeesBean> addEmployee(@RequestBody EmployeesBean employeesBean) throws Exception;
 }

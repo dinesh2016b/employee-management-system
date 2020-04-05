@@ -1,4 +1,4 @@
-package com.in28minutes.microservices.netflixzuulapigatewayserver;
+package com.online.ems;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

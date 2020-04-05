@@ -1,17 +1,29 @@
 package com.online.ems.bean;
 
-import java.util.List;
-
-import com.online.ems.model.Departments;
-
 public class DepartmentsBean {
-	private List<Departments> departmentList;
 
-	public List<Departments> getDepartmentList() {
-		return departmentList;
+	private String deptNo;
+	private String deptName;
+
+	public String getDeptNo() {
+		return deptNo;
 	}
 
-	public void setDepartmentList(List<Departments> departmentList) {
-		this.departmentList = departmentList;
+	public void setDeptNo(String deptNo) {
+		this.deptNo = deptNo;
 	}
+
+	public String getDeptName() {
+		return deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+
+	@Override
+	public String toString() {
+		return "DepartmentsBean [deptNo=" + deptNo + ", deptName=" + deptName + "]";
+	}
+
 }

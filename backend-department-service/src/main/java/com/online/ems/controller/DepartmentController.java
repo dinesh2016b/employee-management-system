@@ -40,17 +40,21 @@ public class DepartmentController {
 	private DepartmentRepositoryDAO departmentRepository;
 
 	@GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<DepartmentsBean> getAllDepartments() throws Exception {
+	public ResponseEntity<List<DepartmentsBean>> getAllDepartments() throws Exception {
 		try {
 			logger.info("----> department list ");
 
 			List<Departments> departmentList = departmentRepository.findAll();
+			List<DepartmentsBean> departmentsBeans = new ArrayList<DepartmentsBean>();
+			DepartmentsBean departmentsBean = null;
+			for (Departments departments : departmentList) {
+				departmentsBean = new DepartmentsBean();
+				departmentsBean.setDeptNo(departments.getDeptNo());
+				departmentsBean.setDeptName(departments.getDeptName());
+				departmentsBeans.add(departmentsBean);
+			}
 
-			DepartmentsBean departmentsBean = new DepartmentsBean();
-
-			departmentsBean.setDepartmentList(departmentList);
-
-			return ResponseEntity.ok().body(departmentsBean);
+			return ResponseEntity.ok().body(departmentsBeans);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,13 +69,12 @@ public class DepartmentController {
 		try {
 
 			logger.info("----> departmentId - " + departmentId);
-			Departments department = departmentRepository.findById(departmentId)
+			Departments departments = departmentRepository.findById(departmentId)
 					.orElseThrow(() -> new Exception("Departments not found for this deptId :: " + departmentId));
-			List<Departments> departmentList = new ArrayList<Departments>();
-			departmentList.add(department);
 
 			DepartmentsBean departmentsBean = new DepartmentsBean();
-			departmentsBean.setDepartmentList(departmentList);
+			departmentsBean.setDeptNo(departments.getDeptNo());
+			departmentsBean.setDeptName(departments.getDeptName());
 
 			return ResponseEntity.ok().body(departmentsBean);
 		} catch (Exception e) {
@@ -101,7 +104,7 @@ public class DepartmentController {
 			@Valid @RequestBody Departments employeeDetails) throws ResourceNotFoundException {
 
 		try {
-		
+
 			Departments department = departmentRepository.findById(departmentId).orElseThrow(
 					() -> new ResourceNotFoundException("Departments not found for this deptId :: " + departmentId));
 
