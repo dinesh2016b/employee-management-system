@@ -53,6 +53,17 @@ services:
     depends_on:
       - employee-mysqldb
 
+  backend-employee-service:
+    image: dinesh2016b/employee-management-system
+    container_name: backend-ems-service
+    build:
+        context: .
+        dockerfile: ./backend-ems-service/Dockerfile
+    ports:
+      - 8095:8095
+    networks:
+      - employee-networks
+
   employee-nginx:
     container_name: employee-nginx
     image: nginx

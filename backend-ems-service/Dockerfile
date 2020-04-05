@@ -15,13 +15,13 @@ FROM openjdk:8
 MAINTAINER Dinesh
 
 # copy WAR into image
-COPY backend-employee-service/target/backend-employee-service-1.0.0.jar /backend-employee-service.jar
+COPY backend-ems-service/target/backend-ems-service-1.0.0.jar /backend-ems-service.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=default", "/backend-employee-service.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=default", "/backend-ems-service.jar"]
 
 #RUN rm -rf /usr/local/tomcat/webapps/*
 
-#COPY backend-employee-service/target/backend-employee-service-1.0.0.jar /usr/local/tomcat/webapps/backend-employee-service.jar
+#COPY backend-employee-service/target/backend-ems-service-1.0.0.jar /usr/local/tomcat/webapps/backend-ems-service.jar
 
 #CMD ["catalina.sh","run"]
