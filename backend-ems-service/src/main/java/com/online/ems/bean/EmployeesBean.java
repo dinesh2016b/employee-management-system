@@ -1,15 +1,12 @@
 package com.online.ems.bean;
 
-import java.util.List;
-
 public class EmployeesBean {
 
 	private long empNo;
 	private String firstName;
 	private String lastName;
 	private String birthDate;
-	
-	private List<DepartmentsBean> departmentsBeanList;
+	private DepartmentsBean departmentsBean;
 
 	public long getEmpNo() {
 		return empNo;
@@ -43,18 +40,17 @@ public class EmployeesBean {
 		this.birthDate = birthDate;
 	}
 
-	public List<DepartmentsBean> getDepartmentsBeanList() {
-		return departmentsBeanList;
+	public DepartmentsBean getDepartmentsBean() {
+		return departmentsBean;
 	}
 
-	public void setDepartmentsBeanList(List<DepartmentsBean> departmentsBeanList) {
-		this.departmentsBeanList = departmentsBeanList;
+	public void setDepartmentsBean(DepartmentsBean departmentsBean) {
+		this.departmentsBean = departmentsBean;
 	}
 
 	@Override
 	public String toString() {
 		return "EmployeesBean [empNo=" + empNo + ", firstName=" + firstName + ", lastName=" + lastName + ", birthDate="
-				+ birthDate + "]";
+				+ birthDate + ", departmentName=" + departmentsBean.getDeptName() + "]";
 	}
-
 }

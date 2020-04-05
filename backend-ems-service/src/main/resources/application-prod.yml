@@ -3,34 +3,19 @@ logging:
     org:
       springframework: DEBUG
     root: ERROR
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 server:
   error:
     include-stacktrace: never
-  port: 8092
+  port: 8095
   ssl:
     key-store: classpath:ems.p12
     key-store-password: dinesh
     keyStoreType: PKCS12
-
 spring:
   application:
-    name: backend-employee-service
-  datasource:
-    driverClassName: org.h2.Driver
-    initialization-mode: always
-    password: admin
-    url: jdbc:h2:mem:employees
-    username: admin
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings:
-        trace: false
-        web-allow-others: false
-  jpa:
-    generate-ddl: false
-    hibernate:
-      ddl-auto: none
-      use-new-id-generator-mappings: false
+    name: backend-ems-service

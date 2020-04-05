@@ -27,13 +27,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.online.ems.bean.DepartmentsBean;
 import com.online.ems.bean.EmployeesBean;
-import com.online.ems.exception.EMSExceptionHandler;
 import com.online.ems.service.EmployeeService;
 
 @RestController
 @CrossOrigin(origins = "https://localhost:8080")
-
-@RequestMapping("/ems-employees")
+@RequestMapping("/employees")
 public class EmployeesController {
 
 	private Logger logger = LoggerFactory.getLogger(EmployeesController.class);
@@ -44,8 +42,9 @@ public class EmployeesController {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Resource<EmployeesBean>>> getEmployees() throws Exception {
+	@GetMapping(path = "/pageNo/{pageNo}/size/{size}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Resource<EmployeesBean>>> getEmployees(@PathVariable(value = "pageNo") int pageNo,
+			@PathVariable(value = "size") int size) throws Exception {
 
 		logger.info("------------> getEmployees()");
 
@@ -53,7 +52,7 @@ public class EmployeesController {
 		List<Resource<EmployeesBean>> employeesResourceList = new ArrayList<Resource<EmployeesBean>>();
 
 		try {
-			List<EmployeesBean> employeesBeans = employeeService.getEmployees(0, 10);
+			List<EmployeesBean> employeesBeans = employeeService.getEmployees(pageNo, size);
 
 			for (EmployeesBean employeesBean : employeesBeans) {
 
@@ -73,8 +72,7 @@ public class EmployeesController {
 	}
 
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Resource<EmployeesBean> getEmployeeById(@PathVariable(value = "id") Long employeeId)
-			throws Exception {
+	public Resource<EmployeesBean> getEmployeeById(@PathVariable(value = "id") Long employeeId) throws Exception {
 
 		Resource<EmployeesBean> employesResource = null;
 		try {
@@ -89,7 +87,7 @@ public class EmployeesController {
 			employeesBean.setDepartmentList(departmentsBean.getDepartmentList());
 
 			employesResource = new Resource<EmployeesBean>(employeesBean);
-			employesResource.add(linkTo(methodOn(EmployeesController.class).getEmployees()).withRel("_self"));
+			employesResource.add(linkTo(methodOn(EmployeesController.class).getEmployees(0, 10)).withRel("_self"));
 
 			return employesResource;
 
@@ -101,11 +99,11 @@ public class EmployeesController {
 			e.printStackTrace();
 			throw e;
 		}
-		
+
 		return null;
 	}
 
-	@PostMapping(path = "/",  produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Resource<EmployeesBean>> addEmployee(@RequestBody EmployeesBean employeesBean)
 			throws Exception {
 

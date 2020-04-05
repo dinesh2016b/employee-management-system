@@ -25,24 +25,24 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.online.ems.bean.DepartmentsBean;
 import com.online.ems.exception.ResourceNotFoundException;
-import com.online.ems.service.DepartmentService;
+import com.online.ems.service.DepartmentServiceProxy;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping(path = "/departments")
-public class DepartmentsController {
+@RequestMapping(path = "/ems-departments")
+public class EMSDepartmentsController {
 
-	private Logger logger = LoggerFactory.getLogger(DepartmentsController.class);
+	private Logger logger = LoggerFactory.getLogger(EMSDepartmentsController.class);
 
 	@Autowired
-	private DepartmentService departmentService;
+	private DepartmentServiceProxy departmentServiceProxy;
 
 	@GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<DepartmentsBean> getAllDepartments() throws Exception {
 		try {
 			logger.info("----> department list ");
 
-			List<DepartmentsBean> departmentsBeanList = departmentService.getAllDepartments();
+			List<DepartmentsBean> departmentsBeanList = departmentServiceProxy.getAllDepartments();
 
 			return departmentsBeanList;
 		} catch (Exception e) {
@@ -58,7 +58,7 @@ public class DepartmentsController {
 		try {
 
 			logger.info("----> departmentId - " + departmentId);
-			DepartmentsBean departmentsBean = departmentService.getDepartmentsById(departmentId);
+			DepartmentsBean departmentsBean = departmentServiceProxy.getDepartmentsById(departmentId);
 
 			return departmentsBean;
 		} catch (Exception e) {
@@ -72,7 +72,7 @@ public class DepartmentsController {
 			throws Exception {
 
 		try {
-			departmentService.createDepartment(departmentBean);
+			departmentServiceProxy.createDepartment(departmentBean);
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 					.buildAndExpand(departmentBean.getDeptNo()).toUri();
 
@@ -89,7 +89,7 @@ public class DepartmentsController {
 
 		try {
 
-			departmentService.updateEmployee(departmentId, departmentsBean);
+			departmentServiceProxy.updateDepartment(departmentId, departmentsBean);
 
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 					.buildAndExpand(departmentsBean.getDeptNo()).toUri();
@@ -108,7 +108,7 @@ public class DepartmentsController {
 
 		try {
 
-			departmentService.deleteDepartment(departmentId);
+			departmentServiceProxy.deleteDepartment(departmentId);
 			Map<String, Boolean> response = new HashMap<>();
 			response.put("deleted", Boolean.TRUE);
 			return response;
