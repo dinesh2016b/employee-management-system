@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class EmployeeService {
 
-    private employeeUrl: string = 'https://localhost:8095/ems-employees';
+    private employeeUrl: string = 'http://localhost:8095/ems-employees';
 
     constructor(private http: HttpClient) {
         // this.employeeUrl = 'http://localhost:8080/employees';

@@ -22,6 +22,6 @@ CMD ["java", "-jar", "-Dspring.profiles.active=default", "/discovery-server.jar"
 
 #RUN rm -rf /usr/local/tomcat/webapps/*
 
-#COPY backend-department-service/target/backend-department-service-1.0.0.jar /usr/local/tomcat/webapps/backend-department-service.jar
+#COPY backend-department-service/target/discovery-server-1.0.0.jar /usr/local/tomcat/webapps/discovery-server.jar
 
 #CMD ["catalina.sh","run"]
