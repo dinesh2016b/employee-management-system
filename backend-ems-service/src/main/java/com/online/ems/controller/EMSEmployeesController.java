@@ -24,7 +24,7 @@ import com.online.ems.service.DepartmentServiceProxy;
 import com.online.ems.service.EmployeeServiceProxy;
 
 @RestController
-@CrossOrigin(origins = "https://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/ems-employees")
 public class EMSEmployeesController {
 

@@ -31,7 +31,7 @@ import com.online.ems.model.Departments;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping(path = "/departments")
+@RequestMapping("/departments")
 public class DepartmentController {
 
 	private Logger logger = LoggerFactory.getLogger(DepartmentController.class);

@@ -29,7 +29,7 @@ import com.online.ems.service.DepartmentServiceProxy;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping(path = "/ems-departments")
+@RequestMapping("/ems-departments")
 public class EMSDepartmentsController {
 
 	private Logger logger = LoggerFactory.getLogger(EMSDepartmentsController.class);

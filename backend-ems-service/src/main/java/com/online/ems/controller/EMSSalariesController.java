@@ -19,7 +19,7 @@ import com.online.ems.bean.SalariesBean;
 import com.online.ems.service.SalariesServiceProxy;
 
 @RestController
-@CrossOrigin(origins = "https://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8080")
 
 @RequestMapping("/ems-salaries")
 public class EMSSalariesController {

@@ -20,8 +20,8 @@ export class EmployeeService {
     }
 
     public findAll(): Observable<Employee[]> {
-        return this.http.get<Employee[]>((this.employeeUrl));
-        //return this.http.get<Employee[]>((this.employeeUrl), { headers: { authorization: this.createBasicAuthToken("dinesh", "dinesh") }});
+        return this.http.get<Employee[]>((this.employeeUrl + '/pageNo/0/size/10'));
+        //return this.http.get<Employee[]>((this.employeeUrl + '/pageNo/0/size/10'), { headers: { authorization: this.createBasicAuthToken("dinesh", "dinesh") }});
     }
 
     public save(employee: Employee) {
