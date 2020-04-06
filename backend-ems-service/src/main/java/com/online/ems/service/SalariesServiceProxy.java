@@ -3,6 +3,7 @@ package com.online.ems.service;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.online.ems.bean.SalariesBean;
 
@@ -10,7 +11,7 @@ import com.online.ems.bean.SalariesBean;
 @RibbonClient(name = "backend-salaries-service")
 public interface SalariesServiceProxy {
 
-	@GetMapping(path = "/salaries")
-	public SalariesBean getSalariesByEmployeeId(String departmentId) throws Exception;
+	@GetMapping(path = "/salaries/{id}")
+	public SalariesBean getSalariesByEmployeeId(@PathVariable(value = "id") int id) throws Exception;
 
 }

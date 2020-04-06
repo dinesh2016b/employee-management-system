@@ -10,7 +10,6 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,12 +36,13 @@ public class EMSDepartmentsController {
 	@Autowired
 	private DepartmentServiceProxy departmentServiceProxy;
 
-	@GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<DepartmentsBean> getAllDepartments() throws Exception {
+	@GetMapping(path = "/pageNo/{pageNo}/size/{size}")
+	public List<DepartmentsBean> getAllDepartments(@PathVariable(value = "pageNo") int pageNo,
+			@PathVariable(value = "size") int size) throws Exception {
 		try {
 			logger.info("----> department list ");
 
-			List<DepartmentsBean> departmentsBeanList = departmentServiceProxy.getAllDepartments();
+			List<DepartmentsBean> departmentsBeanList = departmentServiceProxy.getAllDepartments(pageNo, size);
 
 			return departmentsBeanList;
 		} catch (Exception e) {
@@ -52,7 +52,7 @@ public class EMSDepartmentsController {
 		}
 	}
 
-	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/{id}")
 	public DepartmentsBean getDepartmentsById(@PathVariable(value = "id") String departmentId) throws Exception {
 
 		try {
@@ -67,7 +67,7 @@ public class EMSDepartmentsController {
 		}
 	}
 
-	@PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/")
 	public ResponseEntity<DepartmentsBean> createDepartment(@Valid @RequestBody DepartmentsBean departmentBean)
 			throws Exception {
 
@@ -83,7 +83,7 @@ public class EMSDepartmentsController {
 		}
 	}
 
-	@PutMapping(path = "/{deptId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(path = "/{deptId}")
 	public ResponseEntity<DepartmentsBean> updateEmployee(String departmentId, DepartmentsBean departmentsBean)
 			throws ResourceNotFoundException {
 
@@ -103,7 +103,7 @@ public class EMSDepartmentsController {
 
 	}
 
-	@DeleteMapping(path = "/{deptId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(path = "/{deptId}")
 	public Map<String, Boolean> deleteEmployee(String departmentId) throws ResourceNotFoundException {
 
 		try {

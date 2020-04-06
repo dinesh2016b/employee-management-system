@@ -14,7 +14,7 @@ export class SalariesService {
   }
 
   public findAll(): Observable<Salaries[]> {
-    return this.http.get<Salaries[]>(this.salariesUrl);
+    return this.http.get<Salaries[]>(this.salariesUrl + '/pageNo/0/size/10');
   }
 
 }

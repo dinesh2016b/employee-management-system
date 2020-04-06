@@ -19,8 +19,9 @@ import com.online.ems.exception.ResourceNotFoundException;
 @RibbonClient(name = "backend-department-service")
 public interface DepartmentServiceProxy {
 
-	@GetMapping(path = "/departments")
-	public List<DepartmentsBean> getAllDepartments() throws Exception;
+	@GetMapping(path = "/departments/pageNo/{pageNo}/size/{size}")
+	public List<DepartmentsBean> getAllDepartments(@PathVariable(value = "pageNo") int pageNo,
+			@PathVariable(value = "size") int size) throws Exception;
 
 	@GetMapping(path = "/departments/{id}")
 	public DepartmentsBean getDepartmentsById(@PathVariable(value = "id") String departmentId) throws Exception;

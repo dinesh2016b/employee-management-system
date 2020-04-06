@@ -20,6 +20,7 @@
 		<module>backend-department-service</module>
 		<module>backend-salaries-service</module>
 		<module>backend-ems-service</module>
+		<module>backend-eureka-server</module>
 		<module>db-h2-service</module>
 		<!-- <module>netflix-zuul-api-gateway-server</module> -->		
 		<!-- <module>frontend</module> -->

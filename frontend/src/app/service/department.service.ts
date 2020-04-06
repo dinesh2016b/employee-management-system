@@ -20,8 +20,8 @@ export class DepartmentService {
 
     public findAll(): Observable<Departments[]> {
         console.log('----> departments');
-        return this.http.get<Departments[]>((this.departmentUrl));
-        //return this.http.get<Departments[]>((this.departmentUrl), { headers: { authorization: this.createBasicAuthToken("dinesh", "dinesh") }});
+        return this.http.get<Departments[]>((this.departmentUrl + '/pageNo/0/size/10'));
+        //return this.http.get<Departments[]>((this.departmentUrl + '/pageNo/0/size/10'), { headers: { authorization: this.createBasicAuthToken("dinesh", "dinesh") }});
     }
 
     public save(department: Departments) {

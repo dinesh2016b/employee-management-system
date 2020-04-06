@@ -7,7 +7,7 @@
 		<artifactId>ems-parent</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>discovery-server</artifactId>
+	<artifactId>backend-eureka-server</artifactId>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

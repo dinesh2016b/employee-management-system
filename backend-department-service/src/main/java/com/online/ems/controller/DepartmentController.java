@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,8 +38,9 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentRepositoryDAO departmentRepository;
 
-	@GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<DepartmentsBean>> getAllDepartments() throws Exception {
+	@GetMapping(path = "/pageNo/{pageNo}/size/{size}")
+	public ResponseEntity<List<DepartmentsBean>> getAllDepartments(@PathVariable(value = "pageNo") int pageNo,
+			@PathVariable(value = "size") int size) throws Exception {
 		try {
 			logger.info("----> department list ");
 
@@ -62,7 +62,7 @@ public class DepartmentController {
 		}
 	}
 
-	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/{id}")
 	public ResponseEntity<DepartmentsBean> getDepartmentsById(@PathVariable(value = "id") String departmentId)
 			throws Exception {
 
@@ -83,7 +83,7 @@ public class DepartmentController {
 		}
 	}
 
-	@PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/")
 	public ResponseEntity<Departments> createDepartment(@Valid @RequestBody Departments department) throws Exception {
 
 		try {
@@ -99,7 +99,7 @@ public class DepartmentController {
 
 	}
 
-	@PutMapping(path = "/{deptId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(path = "/{deptId}")
 	public ResponseEntity<Departments> updateEmployee(@PathVariable(value = "deptId") String departmentId,
 			@Valid @RequestBody Departments employeeDetails) throws ResourceNotFoundException {
 
@@ -122,7 +122,7 @@ public class DepartmentController {
 
 	}
 
-	@DeleteMapping(path = "/{deptId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(path = "/{deptId}")
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "deptId") String departmentId)
 			throws ResourceNotFoundException {
 
