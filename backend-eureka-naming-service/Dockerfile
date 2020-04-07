@@ -15,13 +15,13 @@ FROM openjdk:8
 MAINTAINER Dinesh
 
 # copy WAR into image
-COPY discovery-server/target/discovery-server-1.0.0.jar /discovery-server.jar
+COPY backend-eureka-naming-service/target/backend-eureka-naming-service-1.0.0.jar /backend-eureka-naming-service.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=default", "/discovery-server.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=default", "/backend-eureka-naming-service.jar"]
 
 #RUN rm -rf /usr/local/tomcat/webapps/*
 
-#COPY backend-department-service/target/discovery-server-1.0.0.jar /usr/local/tomcat/webapps/discovery-server.jar
+#COPY backend-department-service/target/backend-eureka-naming-service-1.0.0.jar /usr/local/tomcat/webapps/backend-eureka-naming-service.jar
 
 #CMD ["catalina.sh","run"]
