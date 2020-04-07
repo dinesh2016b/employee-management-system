@@ -18,7 +18,7 @@ MAINTAINER Dinesh
 COPY backend-salaries-service/target/backend-salaries-service-1.0.0.jar /backend-salaries-service.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=default", "/backend-salaries-service.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=pat", "/backend-salaries-service.jar"]
 
 #RUN rm -rf /usr/local/tomcat/webapps/*
 
