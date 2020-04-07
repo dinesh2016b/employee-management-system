@@ -60,7 +60,7 @@ public class EMSEmployeesController {
 			employesResource
 					.add(linkTo(methodOn(EMSEmployeesController.class).getEmployeeById(employeeId)).withRel("_self"));
 
-			String departmentId = "1002";
+			String departmentId = "d001";
 			DepartmentsBean departmentsBean = departmentServiceProxy.getDepartmentsById(departmentId);
 			logger.debug("---------> Departments :" + departmentsBean);
 

@@ -79,7 +79,7 @@ public class EmployeesController {
 
 			restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("dinesh", "dinesh"));
 			DepartmentsBean departmentsBean = (DepartmentsBean) restTemplate
-					.getForObject("http://localhost:8091/departments/1002", DepartmentsBean.class);
+					.getForObject("http://localhost:8091/departments/d001", DepartmentsBean.class);
 
 			logger.debug("---------> Departments :" + departmentsBean);
 

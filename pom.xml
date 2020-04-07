@@ -16,7 +16,7 @@
 	</parent>
 
 	<modules>
-		<module>backend-eureka-naming-service</module>
+		<module>backend-eureka-service</module>
 		<module>backend-employee-service</module>
 		<module>backend-department-service</module>
 		<module>backend-salaries-service</module>

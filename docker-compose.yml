@@ -64,12 +64,12 @@ services:
     networks:
       - employee-networks
 
-  backend-eureka-naming-service:
+  backend-eureka-service:
     image: dinesh2016b/employee-management-system
-    container_name: backend-eureka-naming-service
+    container_name: backend-eureka-service
     build:
         context: .
-        dockerfile: ./backend-eureka-naming-service/Dockerfile
+        dockerfile: ./backend-eureka-service/Dockerfile
     ports:
       - 8761:8761
     networks:
