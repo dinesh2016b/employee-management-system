@@ -16,12 +16,11 @@
 	</parent>
 
 	<modules>
+		<module>backend-eureka-naming-service</module>
 		<module>backend-employee-service</module>
 		<module>backend-department-service</module>
 		<module>backend-salaries-service</module>
 		<module>backend-ems-service</module>
-		<module>backend-eureka-naming-service</module>
-		<module>db-h2-service</module>
 		<!-- <module>netflix-zuul-api-gateway-server</module> -->
 		<!-- <module>frontend</module> -->
 	</modules>
