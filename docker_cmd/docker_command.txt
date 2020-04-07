@@ -5,21 +5,22 @@ docker-compose -f "docker-compose.yml" build employee-mysqldb
 docker-compose -f "docker-compose.yml" build employee-nginx
 
 # Up service
+docker-compose -f "docker-compose.yml" up -d employee-mysqldb
 docker-compose -f "docker-compose.yml" up -d backend-employee-service
 docker-compose -f "docker-compose.yml" up -d backend-department-service
 docker-compose -f "docker-compose.yml" up -d backend-salaries-service
 docker-compose -f "docker-compose.yml" up -d backend-ems-service
-
-docker-compose -f "docker-compose.yml" up -d employee-mysqldb
+docker-compose -f "docker-compose.yml" up -d backend-eureka-naming-service
 docker-compose -f "docker-compose.yml" up -d employee-nginx
 
 # Restart service
+docker-compose -f "docker-compose.yml" restart employee-mysqldb
 docker-compose -f "docker-compose.yml" restart backend-employee-service
 docker-compose -f "docker-compose.yml" restart backend-department-service
 docker-compose -f "docker-compose.yml" restart backend-salaries-service
 docker-compose -f "docker-compose.yml" restart backend-ems-service
+docker-compose -f "docker-compose.yml" restart backend-eureka-naming-service
 
-docker-compose -f "docker-compose.yml" restart employee-mysqldb
 docker-compose -f "docker-compose.yml" restart employee-nginx
 
 # Build service

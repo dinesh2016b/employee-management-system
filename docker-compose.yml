@@ -64,29 +64,29 @@ services:
     networks:
       - employee-networks
 
-  discovery-server:
+  backend-eureka-naming-service:
     image: dinesh2016b/employee-management-system
-    container_name: discovery-server
+    container_name: backend-eureka-naming-service
     build:
         context: .
-        dockerfile: ./discovery-server/Dockerfile
+        dockerfile: ./backend-eureka-naming-service/Dockerfile
     ports:
       - 8761:8761
     networks:
       - employee-networks
 
-  employee-nginx:
-    container_name: employee-nginx
-    image: nginx
-    build:
-        context: .
-        dockerfile: ./frontend/Dockerfile
+#  employee-nginx:
+#    container_name: employee-nginx
+#    image: nginx
+#    build:
+#        context: .
+#        dockerfile: ./frontend/Dockerfile
 #    volumes:
 #      - ./frontend/src/main/web/dist/app:/usr/share/nginx/html
-    ports:
-      - 8080:80
-    networks:
-      - employee-networks
+#    ports:
+#      - 8080:80
+#    networks:
+#      - employee-networks
 
 volumes:
   employee-mysql-volumes:
