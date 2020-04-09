@@ -8,7 +8,7 @@
 
 # OpenJDK JRE
 FROM openjdk:8
-
+EXPOSE 8092
 #FROM tomcat:8.0.51-jre8-alpine
 
 # Set the file maintainer (your name - the file's author)
@@ -18,7 +18,7 @@ MAINTAINER Dinesh
 COPY backend-employee-service/target/backend-employee-service-1.0.0.jar /backend-employee-service.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=pat", "/backend-employee-service.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=default", "/backend-employee-service.jar"]
 
 #RUN rm -rf /usr/local/tomcat/webapps/*
 

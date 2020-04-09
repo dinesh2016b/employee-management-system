@@ -8,7 +8,7 @@
 
 # OpenJDK JRE
 FROM openjdk:8
-
+EXPOSE 8093
 #FROM tomcat:8.0.51-jre8-alpine
 
 # Set the file maintainer (your name - the file's author)

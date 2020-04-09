@@ -8,7 +8,7 @@
 
 # OpenJDK JRE
 FROM openjdk:8
-
+EXPOSE 8095
 #FROM tomcat:8.0.51-jre8-alpine
 
 # Set the file maintainer (your name - the file's author)
@@ -18,7 +18,7 @@ MAINTAINER Dinesh
 COPY backend-ems-service/target/backend-ems-service-1.0.0.jar /backend-ems-service.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=pat", "/backend-ems-service.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=default", "/backend-ems-service.jar"]
 
 #RUN rm -rf /usr/local/tomcat/webapps/*
 
