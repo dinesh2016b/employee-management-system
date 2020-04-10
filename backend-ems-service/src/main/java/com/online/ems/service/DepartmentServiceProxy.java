@@ -16,7 +16,7 @@ import com.online.ems.bean.DepartmentsBean;
 import com.online.ems.exception.ResourceNotFoundException;
 
 @FeignClient(name = "backend-department-service", url = "localhost:8091")
-@RibbonClient(name = "backend-department-service")
+//@RibbonClient(name = "backend-department-service")
 public interface DepartmentServiceProxy {
 
 	@GetMapping(path = "/departments/pageNo/{pageNo}/size/{size}")

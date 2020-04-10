@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableEurekaClient
 @EnableFeignClients
-@RibbonClients
+//@RibbonClients
 @SpringBootApplication
 public class EMSMainApplication {
 
