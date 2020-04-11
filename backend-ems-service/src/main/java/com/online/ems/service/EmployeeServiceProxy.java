@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.online.ems.bean.EmployeesBean;
 
-@FeignClient(name = "backend-employee-service", url = "localhost:8092")
-//@RibbonClient(name = "backend-employee-service")
+//@FeignClient(name = "backend-employee-service", url = "localhost:8092")
+@FeignClient(name = "backend-employee-service")
+@RibbonClient(name = "backend-employee-service")
 public interface EmployeeServiceProxy {
 
 	@GetMapping(path = "/employees/pageNo/{pageNo}/size/{size}")

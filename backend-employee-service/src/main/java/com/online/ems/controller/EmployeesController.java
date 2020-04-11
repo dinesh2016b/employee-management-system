@@ -77,14 +77,14 @@ public class EmployeesController {
 		Resource<EmployeesBean> employesResource = null;
 		try {
 
-			restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("dinesh", "dinesh"));
-			DepartmentsBean departmentsBean = (DepartmentsBean) restTemplate
-					.getForObject("http://localhost:8091/departments/d001", DepartmentsBean.class);
+			//restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("dinesh", "dinesh"));
+			//DepartmentsBean departmentsBean = (DepartmentsBean) restTemplate
+			//		.getForObject("http://localhost:8091/departments/d001", DepartmentsBean.class);
 
-			logger.debug("---------> Departments :" + departmentsBean);
+			//logger.debug("---------> Departments :" + departmentsBean);
 
 			EmployeesBean employeesBean = employeeService.getEmployeesById(employeeId);
-			employeesBean.setDepartmentsBean(departmentsBean);
+			//employeesBean.setDepartmentsBean(departmentsBean);
 
 			employesResource = new Resource<EmployeesBean>(employeesBean);
 			employesResource.add(linkTo(methodOn(EmployeesController.class).getEmployees(0, 10)).withRel("_self"));
