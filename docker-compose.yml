@@ -1,5 +1,16 @@
 version: "3"
 services:
+  backend-eureka-service:
+    image: dinesh2016b/employee-management-system
+    container_name: backend-eureka-service
+    build:
+        context: .
+        dockerfile: ./backend-eureka-service/Dockerfile
+    ports:
+      - 8761:8761
+    expose:
+      - 8761
+
   employee-mysqldb:
     container_name: employee-mysqldb
     build:
@@ -10,25 +21,9 @@ services:
     expose:
       - 3306
     networks:
-     - employee-networks
+     - ems-networks
     volumes:
-      - employee-mysql-volumes:/var/lib/mysql
-
-  backend-employee-service:
-    image: dinesh2016b/employee-management-system
-    container_name: backend-employee-service
-    build:
-        context: .
-        dockerfile: ./backend-employee-service/Dockerfile
-    ports:
-      - 8092:8092
-    expose:
-      - 8092
-    networks:
-      - employee-networks
-    depends_on:
-      - employee-mysqldb
-    #  - backend-eureka-service
+      - ems-mysql-volumes:/var/lib/mysql
 
   backend-department-service:
     image: dinesh2016b/employee-management-system
@@ -41,10 +36,26 @@ services:
     expose:
       - 8091
     networks:
-      - employee-networks
+      - ems-networks
     depends_on:
+      - backend-eureka-service
       - employee-mysqldb
-    #  - backend-eureka-service
+
+  backend-employee-service:
+    image: dinesh2016b/employee-management-system
+    container_name: backend-employee-service
+    build:
+        context: .
+        dockerfile: ./backend-employee-service/Dockerfile
+    ports:
+      - 8092:8092
+    expose:
+      - 8092
+    networks:
+      - ems-networks
+    depends_on:
+      - backend-eureka-service
+      - employee-mysqldb
 
   backend-salaries-service:
     image: dinesh2016b/employee-management-system
@@ -57,10 +68,10 @@ services:
     expose:
       - 8093
     networks:
-      - employee-networks
+      - ems-networks
     depends_on:
+      - backend-eureka-service
       - employee-mysqldb
-    #  - backend-eureka-service
 
   backend-ems-service:
     image: dinesh2016b/employee-management-system
@@ -73,20 +84,9 @@ services:
     expose:
       - 8095
     networks:
-      - employee-networks
-    #depends_on:
-    #  - backend-eureka-service
-
-  backend-eureka-service:
-    image: dinesh2016b/employee-management-system
-    container_name: backend-eureka-service
-    build:
-        context: .
-        dockerfile: ./backend-eureka-service/Dockerfile
-    ports:
-      - 8761:8761
-    expose:
-      - 8761
+      - ems-networks
+    depends_on:
+      - backend-eureka-service
 
 #  employee-nginx:
 #    container_name: employee-nginx
@@ -99,10 +99,10 @@ services:
 #    ports:
 #      - 8080:80
 #    networks:
-#      - employee-networks
+#      - ems-networks
 
 volumes:
-  employee-mysql-volumes:
+  ems-mysql-volumes:
 
 networks:
-  employee-networks:
+  ems-networks:
