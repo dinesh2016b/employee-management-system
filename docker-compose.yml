@@ -54,7 +54,7 @@ services:
     networks:
       - ems-networks
     depends_on:
-      - backend-eureka-service
+      - backend-eureka-server
       - employee-mysqldb
 
   backend-employee-service:
@@ -70,7 +70,7 @@ services:
     networks:
       - ems-networks
     depends_on:
-      - backend-eureka-service
+      - backend-eureka-server
       - employee-mysqldb
 
   backend-salaries-service:
@@ -86,7 +86,7 @@ services:
     networks:
       - ems-networks
     depends_on:
-      - backend-eureka-service
+      - backend-eureka-server
       - employee-mysqldb
 
   backend-ems-service:
@@ -102,7 +102,7 @@ services:
     networks:
       - ems-networks
     depends_on:
-      - backend-eureka-service
+      - backend-eureka-server
 
 #  employee-nginx:
 #    image: dinesh2016b/employee-management-system
