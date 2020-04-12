@@ -15,13 +15,13 @@ EXPOSE 8761
 MAINTAINER Dinesh
 
 # copy WAR into image
-COPY backend-eureka-service/target/backend-eureka-service-1.0.0.jar /backend-eureka-service.jar
+COPY backend-eureka-server/target/backend-eureka-server-1.0.0.jar /backend-eureka-server.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=pat", "/backend-eureka-service.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=pat", "/backend-eureka-server.jar"]
 
 #RUN rm -rf /usr/local/tomcat/webapps/*
 
-#COPY backend-department-service/target/backend-eureka-service-1.0.0.jar /usr/local/tomcat/webapps/backend-eureka-service.jar
+#COPY backend-department-service/target/backend-eureka-server-1.0.0.jar /usr/local/tomcat/webapps/backend-eureka-server.jar
 
 #CMD ["catalina.sh","run"]

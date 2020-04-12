@@ -1,17 +1,33 @@
 version: "3"
 services:
-  backend-eureka-service:
+  backend-eureka-server:
     image: dinesh2016b/employee-management-system
-    container_name: backend-eureka-service
+    container_name: backend-eureka-server
     build:
         context: .
-        dockerfile: ./backend-eureka-service/Dockerfile
+        dockerfile: ./backend-eureka-server/Dockerfile
     ports:
       - 8761:8761
     expose:
       - 8761
+    networks:
+     - ems-networks
+
+  backend-zuul-api-gateway-server:
+    image: dinesh2016b/employee-management-system
+    container_name: backend-zuul-api-gateway-server
+    build:
+        context: .
+        dockerfile: ./backend-zuul-api-gateway-server/Dockerfile
+    ports:
+      - 8765:8765
+    expose:
+      - 8765
+    networks:
+     - ems-networks
 
   employee-mysqldb:
+    image: dinesh2016b/employee-management-system
     container_name: employee-mysqldb
     build:
         context: .
@@ -89,6 +105,7 @@ services:
       - backend-eureka-service
 
 #  employee-nginx:
+#    image: dinesh2016b/employee-management-system
 #    container_name: employee-nginx
 #    image: nginx
 #    build:

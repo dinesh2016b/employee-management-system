@@ -2,17 +2,12 @@ package com.online.ems;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@RestController
-@EnableAutoConfiguration
 @SpringBootApplication
-//@EnableEurekaClient
-@EnableDiscoveryClient
+@EnableEurekaClient
+//@EnableDiscoveryClient
 public class DepartmentEMSApplication extends SpringBootServletInitializer {
 
 	// start everything
