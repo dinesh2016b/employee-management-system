@@ -1,6 +1,7 @@
 package com.online.ems.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.online.ems.bean.SalariesBean;
 import com.online.ems.dao.SalariesRepositoryDAO;
 import com.online.ems.exception.ResourceNotFoundException;
 import com.online.ems.model.Salaries;
@@ -42,18 +44,21 @@ public class SalariesController {
 
 		return ResponseEntity.ok().body(salariesList);
 	}
-
+	
 	@GetMapping("/salaries/{id}")
-	public ResponseEntity<List<Salaries>> getSalariesById(@PathVariable(value = "id") String departmentId)
-			throws Exception {
+	public SalariesBean getSalariesByEmployeeId(@PathVariable(value = "id") long id) throws Exception {
 		try {
 
-			logger.info("----> departmentId - " + departmentId);
-			Salaries salaries = salariesRepositoryDAO.findById(departmentId)
-					.orElseThrow(() -> new Exception("Salaries not found for this deptId :: " + departmentId));
-			List<Salaries> list = new ArrayList<Salaries>();
-			list.add(salaries);
-			return ResponseEntity.ok().body(list);
+			logger.info("----> employeeId - " + id);
+			/*
+			Salaries salaries = salariesRepositoryDAO.findById(String.valueOf(id))
+					.orElseThrow(() -> new Exception("Salaries not found for this employeeId :: " + String.valueOf(id)));
+			*/
+			SalariesBean salariesBean = new SalariesBean();
+			salariesBean.setSalary(100);
+			salariesBean.setToDate(new Date());
+			
+			return salariesBean;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;

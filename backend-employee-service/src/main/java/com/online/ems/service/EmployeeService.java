@@ -2,7 +2,6 @@ package com.online.ems.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +11,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.online.ems.bean.DepartmentsBean;
 import com.online.ems.bean.EmployeesBean;
+import com.online.ems.bean.SalariesBean;
 import com.online.ems.controller.EmployeesController;
 import com.online.ems.dao.EmployeeRepository;
 import com.online.ems.exception.ResourceNotFoundException;
@@ -22,6 +23,12 @@ import com.online.ems.model.Employees;
 public class EmployeeService {
 
 	private Logger logger = LoggerFactory.getLogger(EmployeesController.class);
+	
+	@Autowired
+	private DepartmentServiceProxy departmentServiceProxy;
+	
+	@Autowired
+	private SalariesServiceProxy salariesServiceProxy;
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
@@ -40,6 +47,18 @@ public class EmployeeService {
 			employeesBean.setFirstName(employees.getFirstName());
 			employeesBean.setLastName(employees.getLastName());
 			employeesBean.setBirthDate(employees.getBirthDate());
+			
+			String departmentId = "1001";
+			DepartmentsBean departmentsBean = departmentServiceProxy.getDepartmentsById(departmentId);
+			logger.debug("---------> Departments :" + departmentsBean);
+			
+			employeesBean.setDepartmentsBean(departmentsBean);
+
+			SalariesBean salariesBean = salariesServiceProxy.getSalariesByEmployeeId(employees.getEmpNo());
+			employeesBean.setSalariesBean(salariesBean);
+
+			logger.debug("------------> getEmployeesById() : " + employeesBean.toString());
+
 			employeesBeans.add(employeesBean);
 		}
 
@@ -61,6 +80,15 @@ public class EmployeeService {
 			employeesBean.setLastName(employees.getLastName());
 			employeesBean.setBirthDate(employees.getBirthDate());
 		}
+		
+		String departmentId = "1001";
+		DepartmentsBean departmentsBean = departmentServiceProxy.getDepartmentsById(departmentId);
+		logger.debug("---------> Departments :" + departmentsBean);
+		
+		employeesBean.setDepartmentsBean(departmentsBean);
+
+		SalariesBean salariesBean = salariesServiceProxy.getSalariesByEmployeeId(employees.getEmpNo());
+		employeesBean.setSalariesBean(salariesBean);
 
 		logger.debug("------------> getEmployeesById() : " + employeesBean.toString());
 

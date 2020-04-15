@@ -7,6 +7,7 @@ public class EmployeesBean {
 	private String lastName;
 	private String birthDate;
 	private DepartmentsBean departmentsBean;
+	private SalariesBean salariesBean;
 
 	public long getEmpNo() {
 		return empNo;
@@ -46,6 +47,14 @@ public class EmployeesBean {
 
 	public void setDepartmentsBean(DepartmentsBean departmentsBean) {
 		this.departmentsBean = departmentsBean;
+	}
+
+	public SalariesBean getSalariesBean() {
+		return salariesBean;
+	}
+
+	public void setSalariesBean(SalariesBean salariesBean) {
+		this.salariesBean = salariesBean;
 	}
 
 	@Override

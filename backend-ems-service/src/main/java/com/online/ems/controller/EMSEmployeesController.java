@@ -60,12 +60,14 @@ public class EMSEmployeesController {
 			employesResource
 					.add(linkTo(methodOn(EMSEmployeesController.class).getEmployeeById(employeeId)).withRel("_self"));
 
+			/*
 			String departmentId = "d001";
 			DepartmentsBean departmentsBean = departmentServiceProxy.getDepartmentsById(departmentId);
 			logger.debug("---------> Departments :" + departmentsBean);
 
 			employesResource.getContent().setDepartmentsBean(departmentsBean);
-
+			*/
+			
 			return employesResource;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
