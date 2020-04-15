@@ -7,14 +7,14 @@ import { Salaries } from '../model/salaries';
 
 export class SalariesService {
 
-  private salariesUrl: string = 'https://localhost:8443/';
+  private salariesUrl: string = 'http://localhost:8095/ems-salaries';
 
   constructor(private http: HttpClient) {
 
   }
 
   public findAll(): Observable<Salaries[]> {
-    return this.http.get<Salaries[]>(this.salariesUrl);
+    return this.http.get<Salaries[]>(this.salariesUrl + '/pageNo/0/size/10');
   }
 
 }

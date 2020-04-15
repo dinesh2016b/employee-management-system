@@ -9,13 +9,13 @@ import { LoginComponent } from './component/login/login.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/empoyees', pathMatch: 'full' },
-    { path: 'employees', component: EmployeeListComponent },
-    { path: 'employees/:id', component: EmployeeDetailsComponent },
-    { path: 'departments', component: DepartmentListComponent },
-    { path: 'departments/:id', component: DepartmentDetailsComponent },
-    { path: 'salaries', component: SalariesComponent },
-    { path: 'login', component: LoginComponent },
+    { path: '', redirectTo: '/ems-employees', pathMatch: 'full' },
+    { path: 'ems-employees', component: EmployeeListComponent },
+    { path: 'ems-employees/:id', component: EmployeeDetailsComponent },
+    { path: 'ems-departments', component: DepartmentListComponent },
+    { path: 'ems-departments/:id', component: DepartmentDetailsComponent },
+    { path: 'ems-salaries', component: SalariesComponent },
+    { path: 'ems-login', component: LoginComponent },
     { path: '**', component: PageNotFoundComponent }
 ];
 
