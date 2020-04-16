@@ -23,6 +23,7 @@
 		<module>backend-eureka-server</module>
 		<module>backend-zuul-api-gateway-server</module>
 		<!-- <module>frontend</module> -->
+		<module>backend-config-server</module>
 	</modules>
 
 	<dependencies>
