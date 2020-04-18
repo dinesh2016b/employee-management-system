@@ -38,15 +38,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		<!-- spring security -->
-		
 
-		<!-- spring security test -->
-		
-
-		<!-- <dependency> <groupId>employee.management.system</groupId> <artifactId>ems-frontend</artifactId> 
-			<version>${project.version}</version> <scope>runtime</scope> </dependency> -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -58,30 +50,47 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>
-				spring-cloud-starter-netflix-eureka-client
-			</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-hateoas</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+		</dependency>
+			
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<dependencyManagement>
@@ -98,11 +107,6 @@
 
 	<build>
 		<plugins>
-			<!-- <plugin> <artifactId>maven-resources-plugin</artifactId> <executions> 
-				<execution> <id>copy-resources</id> <phase>validate</phase> <goals> <goal>copy-resources</goal> 
-				</goals> <configuration> <outputDirectory>${project.build.directory}/classes/resources/</outputDirectory> 
-				<resources> <resource> <directory>${project.parent.basedir}/frontend/src/main/web/dist/app/</directory> 
-				</resource> </resources> </configuration> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -125,14 +129,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
-					<warName>ems-app</warName>
-				</configuration>
-			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -141,7 +138,6 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			
 		</plugins>
 	</build>
 </project>

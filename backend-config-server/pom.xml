@@ -7,23 +7,20 @@
   </parent>
   <artifactId>backend-config-server</artifactId>
   <name>backend-config-server</name>
-  <dependencies>
+	<packaging>jar</packaging>
+
+	<dependencies>
   	<dependency>
   		<groupId>org.springframework.cloud</groupId>
   		<artifactId>spring-cloud-config-server</artifactId>
   	</dependency>
-  	<dependency>
-  		<groupId>org.springframework.boot</groupId>
-  		<artifactId>spring-boot-devtools</artifactId>
-  		<scope>runtime</scope>
-  	</dependency>
+
   	<dependency>
   		<groupId>org.springframework.cloud</groupId>
-  		<artifactId>
-  			spring-cloud-starter-netflix-eureka-client
-  		</artifactId>
+  		<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
   	</dependency>
   </dependencies>
+
   <dependencyManagement>
   	<dependencies>
   		<dependency>

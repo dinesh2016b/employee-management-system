@@ -16,6 +16,7 @@
 	</parent>
 
 	<modules>
+		<module>backend-config-server</module>
 		<module>backend-employee-service</module>
 		<module>backend-department-service</module>
 		<module>backend-salaries-service</module>
@@ -23,7 +24,6 @@
 		<module>backend-eureka-server</module>
 		<module>backend-zuul-api-gateway-server</module>
 		<!-- <module>frontend</module> -->
-		<module>backend-config-server</module>
 	</modules>
 
 	<dependencies>
@@ -37,30 +37,12 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>			
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<!--
-			<plugin>
-				<groupId>org.jboss.as.plugins</groupId>
-				<artifactId>jboss-as-maven-plugin</artifactId>
-				<version>7.9.Final</version>
-				<configuration>
-					<execute-commands>
-						<commands>
-							<command>deploy target/employee-management-system.war</command>
-						</commands>
-					</execute-commands>
-					<hostname>localhost:8090</hostname>
-					<username>admin</username>
-					<password>Dinesh@123</password>
-				</configuration>
-			</plugin>
-			-->
 		</plugins>
 	</build>
 </project>
