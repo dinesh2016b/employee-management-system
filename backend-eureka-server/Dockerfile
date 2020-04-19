@@ -1,27 +1,11 @@
-############################################################
-# Dockerfile to run Java
-# Based on Ubuntu Image
-############################################################
-
-# Set the base image to use to Ubuntu
-# FROM ubuntu:19.04
-
 # OpenJDK JRE
 FROM openjdk:8
-EXPOSE 8761
-#FROM tomcat:8.0.51-jre8-alpine
 
 # Set the file maintainer (your name - the file's author)
 MAINTAINER Dinesh
 
 # copy WAR into image
-COPY backend-eureka-server/target/backend-eureka-server-1.0.0.jar /backend-eureka-server.jar
+COPY backend-eureka-server/target/backend-eureka-server-1.0.0.jar backend-eureka-server.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=docker", "/backend-eureka-server.jar"]
-
-#RUN rm -rf /usr/local/tomcat/webapps/*
-
-#COPY backend-department-service/target/backend-eureka-server-1.0.0.jar /usr/local/tomcat/webapps/backend-eureka-server.jar
-
-#CMD ["catalina.sh","run"]
+CMD ["java", "-jar", "-Dspring.profiles.active=docker", "backend-eureka-server.jar"]

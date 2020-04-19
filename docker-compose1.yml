@@ -1,0 +1,56 @@
+version: "3"
+services:
+  backend-eureka-server:
+    image: dinesh2016b/employee-management-system
+    container_name: backend-eureka-server
+    build:
+        context: .
+        dockerfile: ./backend-eureka-server/Dockerfile
+    ports:
+      - 8761:8761
+    networks:
+     - ems-networks
+
+  backend-zuul-api-gateway-server:
+    image: dinesh2016b/employee-management-system
+    container_name: backend-zuul-api-gateway-server
+    build:
+        context: .
+        dockerfile: ./backend-zuul-api-gateway-server/Dockerfile
+    ports:
+      - 8765:8765
+    networks:
+     - ems-networks
+
+  employee-mysqldb:
+    image: dinesh2016b/employee-management-system
+    container_name: employee-mysqldb
+    build:
+        context: .
+        dockerfile: ./db-mysql-service/Dockerfile
+    ports:
+      - 3306:3306
+    networks:
+     - ems-networks
+    volumes:
+      - ems-mysql-volumes:/var/lib/mysql
+
+  backend-department-service:
+    image: dinesh2016b/employee-management-system
+    container_name: backend-department-service
+    build:
+        context: .
+        dockerfile: ./backend-department-service/Dockerfile
+    ports:
+      - 8091:8091
+    networks:
+      - ems-networks
+    links:
+      - backend-eureka-server:backend-eureka-server
+      - employee-mysqldb:employee-mysqldb
+
+volumes:
+  ems-mysql-volumes:
+
+networks:
+  ems-networks:

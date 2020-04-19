@@ -5,7 +5,7 @@ FROM openjdk:8
 MAINTAINER Dinesh
 
 # copy WAR into image
-COPY backend-ems-service/target/backend-ems-service-1.0.0.jar backend-ems-service.jar
+COPY backend-config-server/target/backend-config-server-1.0.0.jar backend-config-server.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=docker", "backend-ems-service.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=docker", "backend-config-server.jar"]
