@@ -11,12 +11,8 @@ services:
     ports:
       - 8761:8761
     networks:
-     - ems-networks
-    links:
-      - backend-eureka-server:backend-eureka-server
-    depends_on:
-      - backend-eureka-server
-
+      - ems-networks
+  
   backend-zuul-api-gateway-server:
     image: dinesh2016b/employee-management-system
     container_name: backend-zuul-api-gateway-server
@@ -28,7 +24,7 @@ services:
     ports:
       - 8765:8765
     networks:
-     - ems-networks
+      - ems-networks
     links:
       - backend-eureka-server:backend-eureka-server
     depends_on:
@@ -45,7 +41,7 @@ services:
     ports:
       - 3306:3306
     networks:
-     - ems-networks
+      - ems-networks
     volumes:
       - ems-mysql-volumes:/var/lib/mysql
 
@@ -64,9 +60,11 @@ services:
     links:
       - backend-eureka-server:backend-eureka-server
       - employee-mysqldb:employee-mysqldb
+      - backend-zuul-api-gateway-server:backend-zuul-api-gateway-server
     depends_on:
       - backend-eureka-server
       - employee-mysqldb
+      - backend-zuul-api-gateway-server
       
   backend-employee-service:
     image: dinesh2016b/employee-management-system
@@ -83,9 +81,11 @@ services:
     links:
       - backend-eureka-server:backend-eureka-server
       - employee-mysqldb:employee-mysqldb
+      - backend-zuul-api-gateway-server:backend-zuul-api-gateway-server
     depends_on:
       - backend-eureka-server
       - employee-mysqldb
+      - backend-zuul-api-gateway-server
       
   backend-salaries-service:
     image: dinesh2016b/employee-management-system
@@ -102,9 +102,11 @@ services:
     links:
       - backend-eureka-server:backend-eureka-server
       - employee-mysqldb:employee-mysqldb
+      - backend-zuul-api-gateway-server:backend-zuul-api-gateway-server
     depends_on:
       - backend-eureka-server
       - employee-mysqldb
+      - backend-zuul-api-gateway-server
       
   backend-ems-service:
     image: dinesh2016b/employee-management-system
@@ -120,10 +122,14 @@ services:
       - ems-networks
     links:
       - backend-eureka-server:backend-eureka-server
+      - backend-zuul-api-gateway-server:backend-zuul-api-gateway-server
       - employee-mysqldb:employee-mysqldb
+      - backend-config-server:backend-config-server
     depends_on:
       - backend-eureka-server
       - employee-mysqldb
+      - backend-zuul-api-gateway-server
+      - backend-config-server
 
   backend-config-server:
     image: dinesh2016b/employee-management-system
@@ -136,13 +142,15 @@ services:
     ports:
       - 8090:8090
     networks:
-     - ems-networks
+      - ems-networks
     links:
       - backend-eureka-server:backend-eureka-server
       - employee-mysqldb:employee-mysqldb
+      - backend-zuul-api-gateway-server:backend-zuul-api-gateway-server
     depends_on:
       - backend-eureka-server
       - employee-mysqldb
+      - backend-zuul-api-gateway-server
             
 #  employee-nginx:
 #    image: dinesh2016b/employee-management-system
