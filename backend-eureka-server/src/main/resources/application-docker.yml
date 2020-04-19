@@ -1,0 +1,20 @@
+eureka:
+  client:
+    fetchRegistry: false
+    registerWithEureka: false
+  instance:
+    hostname: backend-eureka-server
+  server:
+    enableSelfPreservation: false
+  shouldBatchReplication: true
+logging:
+  level:
+    com:
+      netflix:
+        discovery: DEBUG
+        eureka: DEBUG
+server:
+  port: 8761
+spring:
+  application:
+    name: backend-eureka-server
