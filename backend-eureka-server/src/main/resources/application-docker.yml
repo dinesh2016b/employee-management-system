@@ -2,10 +2,10 @@ eureka:
   client:
     fetchRegistry: false
     registerWithEureka: false
-    serviceUrl:
-      defaultZone: http://backend-eureka-server:8761/eureka
-  instance:
-    hostname: backend-eureka-server
+    healthcheck:
+      enabled: true
+  serviceUrl:
+    defaultZone: http://backend-eureka-server:8761/eureka
 server:
   port: 8761
 spring:

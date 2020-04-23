@@ -22,10 +22,10 @@ spring:
   application:
     name: backend-salaries-service
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    password: Dinesh@123
-    url: jdbc:mysql://employee-mysqldb:3306/employees
-    username: root
+    driverClassName: org.h2.Driver
+    password: admin
+    url: jdbc:h2:mem:employees
+    username: admin
   jpa:
     generate-ddl: false
     hibernate:
