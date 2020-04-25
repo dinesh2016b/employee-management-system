@@ -134,19 +134,19 @@ services:
       - backend-salaries-service
       - backend-employee-service
 
-#  employee-nginx:
-#    image: dinesh2016b/employee-management-system
-#    container_name: employee-nginx
-#    image: nginx
-#    build:
-#        context: .
-#        dockerfile: ./frontend/Dockerfile
-#    volumes:
-#      - ./frontend/src/main/web/dist/app:/usr/share/nginx/html
-#    ports:
-#      - 8080:80
-#    networks:
-#      - ems-networks
+  employee-nginx:
+    image: dinesh2016b/ems-nginx
+    container_name: ems-nginx
+    hostname: ems-nginx
+    build:
+        context: .
+        dockerfile: ./frontend/Dockerfile
+    volumes:
+      - ./frontend/src/main/web/dist/app:/usr/share/nginx/html
+    ports:
+      - 8080:80
+    networks:
+      - ems-networks
 
 #volumes:
 #  ems-mysql-volumes:

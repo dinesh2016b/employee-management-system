@@ -21,9 +21,6 @@ COPY . .
 
 RUN npm run build
 
-
-
-
 FROM nginx:1.13.3-alpine
 ## Remove default nginx website
 
