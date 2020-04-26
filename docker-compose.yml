@@ -41,7 +41,7 @@ services:
     expose:
       - 3306
     networks:
-     - ems-networks
+      - ems-networks
     volumes:
       - ems-mysql-volumes:/var/lib/mysql
   backend-department-service:
