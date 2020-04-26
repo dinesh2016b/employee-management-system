@@ -30,6 +30,20 @@ services:
       - backend-eureka-server:backend-eureka-server
     depends_on:
       - backend-eureka-server
+  ems-mysqldb:
+    image: dinesh2016b/ems-mysqldb
+    container_name: ems-mysqldb
+    build:
+        context: .
+        dockerfile: ./db-mysql-service/Dockerfile
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+     - ems-networks
+    volumes:
+      - ems-mysql-volumes:/var/lib/mysql
   backend-department-service:
     image: dinesh2016b/backend-department-service
     container_name: backend-department-service
@@ -49,6 +63,7 @@ services:
     depends_on:
       - backend-eureka-server
       - backend-zuul-api-gateway-server
+      - ems-mysqldb
   backend-employee-service:
     image: dinesh2016b/backend-employee-service
     container_name: backend-employee-service
@@ -68,6 +83,7 @@ services:
     depends_on:
       - backend-eureka-server
       - backend-zuul-api-gateway-server
+      - ems-mysqldb
   backend-salaries-service:
     image: dinesh2016b/backend-salaries-service
     container_name: backend-salaries-service
@@ -87,6 +103,7 @@ services:
     depends_on:
       - backend-eureka-server
       - backend-zuul-api-gateway-server
+      - ems-mysqldb
   backend-config-server:
     image: dinesh2016b/backend-config-server
     container_name: backend-config-server
@@ -133,7 +150,6 @@ services:
       - backend-department-service
       - backend-salaries-service
       - backend-employee-service
-
   ems-nginx:
     image: dinesh2016b/ems-nginx
     container_name: ems-nginx
@@ -147,9 +163,7 @@ services:
       - 8080:80
     networks:
       - ems-networks
-
-#volumes:
-#  ems-mysql-volumes:
-
+volumes:
+  ems-mysql-volumes:
 networks:
   ems-networks:
