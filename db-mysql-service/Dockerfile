@@ -12,3 +12,5 @@ ENV MYSQL_ROOT_PASSWORD Dinesh@123
 # executed during container startup
 
 COPY db-mysql-service/sql-scripts/ /docker-entrypoint-initdb.d/
+
+CMD ["mysql", "-u root", "-pDinesh@123", " < /docker-entrypoint-initdb.d/employees.sql"]
