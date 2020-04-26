@@ -109,19 +109,21 @@ CREATE OR REPLACE VIEW current_dept_emp AS
 
 flush /*!50503 binary */ logs;
 
-SELECT 'LOADING departments' as 'INFO';
-source /docker-entrypoint-initdb.d/load_departments.dump ;
-SELECT 'LOADING employees' as 'INFO';
-source /docker-entrypoint-initdb.d/load_employees.dump ;
-SELECT 'LOADING dept_emp' as 'INFO';
-source /docker-entrypoint-initdb.d/load_dept_emp.dump ;
-SELECT 'LOADING dept_manager' as 'INFO';
-source /docker-entrypoint-initdb.d/load_dept_manager.dump ;
-SELECT 'LOADING titles' as 'INFO';
-source /docker-entrypoint-initdb.d/load_titles.dump ;
-SELECT 'LOADING salaries' as 'INFO';
-source /docker-entrypoint-initdb.d/load_salaries1.dump ;
-source /docker-entrypoint-initdb.d/load_salaries2.dump ;
-source /docker-entrypoint-initdb.d/load_salaries3.dump ;
+SELECT 'LOADING data' as 'INFO';
+source /docker-entrypoint-initdb.d/ems_data.dump ;
 
-source /docker-entrypoint-initdb.d/show_elapsed.sql ;
+--SELECT 'LOADING departments' as 'INFO';
+--source /docker-entrypoint-initdb.d/load_departments.dump ;
+--SELECT 'LOADING employees' as 'INFO';
+--source /docker-entrypoint-initdb.d/load_employees.dump ;
+--SELECT 'LOADING dept_emp' as 'INFO';
+--source /docker-entrypoint-initdb.d/load_dept_emp.dump ;
+--SELECT 'LOADING dept_manager' as 'INFO';
+--source /docker-entrypoint-initdb.d/load_dept_manager.dump ;
+--SELECT 'LOADING titles' as 'INFO';
+--source /docker-entrypoint-initdb.d/load_titles.dump ;
+--SELECT 'LOADING salaries' as 'INFO';
+--source /docker-entrypoint-initdb.d/load_salaries1.dump ;
+--source /docker-entrypoint-initdb.d/load_salaries2.dump ;
+--source /docker-entrypoint-initdb.d/load_salaries3.dump ;
+--source /docker-entrypoint-initdb.d/show_elapsed.sql ;
