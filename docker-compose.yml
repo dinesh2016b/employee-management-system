@@ -134,7 +134,7 @@ services:
       - backend-salaries-service
       - backend-employee-service
 
-  employee-nginx:
+  ems-nginx:
     image: dinesh2016b/ems-nginx
     container_name: ems-nginx
     hostname: ems-nginx
