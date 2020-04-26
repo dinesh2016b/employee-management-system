@@ -1,0 +1,35 @@
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://backend-eureka-server:8761/eureka
+logging:
+  level:
+    org:
+      springframework: DEBUG
+    root: ERROR
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  error:
+    include-stacktrace: never
+  port: 8091
+spring:
+  application:
+    name: backend-department-service
+  datasource:
+    driverClassName: org.h2.Driver
+    password: admin
+    url: jdbc:h2:mem:employees
+    username: admin
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: false
+  main:
+    allow-bean-definition-overriding: true

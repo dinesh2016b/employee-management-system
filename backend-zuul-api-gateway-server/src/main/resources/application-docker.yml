@@ -1,0 +1,11 @@
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://backend-eureka-server:8761/eureka
+server:
+  port: 8765
+spring:
+  application:
+    name: backend-zuul-api-gateway-server
