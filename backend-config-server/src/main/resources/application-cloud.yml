@@ -1,0 +1,23 @@
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://backend-eureka-server:8761/eureka
+logging:
+  level:
+    org:
+      springframework: DEBUG
+    root: ERROR
+server:
+  port: 8090
+spring:
+  application:
+    name: backend-config-server
+  cloud:
+    config:
+      profile: default
+      server:
+        git:
+          searchPaths: configuration
+          uri: https://github.com/dinesh2016b/employee-management-system
