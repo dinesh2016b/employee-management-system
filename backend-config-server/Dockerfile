@@ -8,4 +8,4 @@ MAINTAINER Dinesh
 COPY backend-config-server/target/backend-config-server-1.0.0.jar backend-config-server.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=docker", "backend-config-server.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=cloud", "backend-config-server.jar"]

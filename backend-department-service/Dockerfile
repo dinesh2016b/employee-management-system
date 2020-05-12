@@ -8,4 +8,4 @@ MAINTAINER Dinesh
 COPY backend-department-service/target/backend-department-service-1.0.0.jar backend-department-service.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=docker", "backend-department-service.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=cloud", "backend-department-service.jar"]

@@ -8,4 +8,4 @@ MAINTAINER Dinesh
 COPY backend-zuul-api-gateway-server/target/backend-zuul-api-gateway-server-1.0.0.jar backend-zuul-api-gateway-server.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=docker", "backend-zuul-api-gateway-server.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=cloud", "backend-zuul-api-gateway-server.jar"]
