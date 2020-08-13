@@ -1,0 +1,27 @@
+gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project brave-idea-276723
+
+kubectl create deployment backend-eureka-server --image=dinesh2016b/backend-eureka-server:latest
+kubectl expose deployment backend-eureka-server --type=LoadBalancer --port=8761
+
+kubectl create deployment backend-zuul-api-gateway-server --image=dinesh2016b/backend-zuul-api-gateway-server:latest
+kubectl expose deployment backend-zuul-api-gateway-server --type=LoadBalancer --port=8765
+
+kubectl create deployment backend-department-service --image=dinesh2016b/backend-department-service:latest
+kubectl expose deployment backend-department-service --type=LoadBalancer --port=8091
+
+kubectl create deployment backend-employee-service --image=dinesh2016b/backend-employee-service:latest
+kubectl expose deployment backend-employee-service --type=LoadBalancer --port=8092
+
+kubectl create deployment backend-salaries-service --image=dinesh2016b/backend-salaries-service:latest
+kubectl expose deployment backend-salaries-service --type=LoadBalancer --port=8093
+
+kubectl create deployment backend-ems-service --image=dinesh2016b/backend-ems-service:latest
+kubectl expose deployment backend-ems-service --type=LoadBalancer --port=8095
+
+-- optional services
+kubectl create deployment backend-config-server --image=dinesh2016b/backend-config-server:latest
+kubectl expose deployment backend-config-server --type=LoadBalancer --port=8090
+
+kubectl create deployment ems-mysqldb --image=dinesh2016b/ems-mysqldb:latest
+kubectl expose deployment ems-mysqldb --type=LoadBalancer --port=3306
+

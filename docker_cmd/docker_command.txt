@@ -38,6 +38,14 @@ docker image prune
 # Push
 sudo docker push dinesh2016b/employee-management-system
 
+docker push dinesh2016b/backend-eureka-server:latest
+docker push dinesh2016b/backend-zuul-api-gateway-server:latest
+docker push dinesh2016b/ems-mysqldb:latest
+docker push dinesh2016b/backend-department-service:latest
+docker push dinesh2016b/backend-employee-service:latest
+docker push dinesh2016b/backend-salaries-service:latest
+docker push dinesh2016b/backend-config-server:latest
+
 # git commands
 
 git diff --staged
