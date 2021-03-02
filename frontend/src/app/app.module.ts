@@ -25,6 +25,7 @@ import { DepartmentService } from './service/department.service';
 import { SalariesService } from './service/salaries.service';
 import { LoginComponent } from './component/login/login.component';
 import { DepartmentEmployeeListComponent } from './component/departments/department-employee-list/department-employee-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { DepartmentEmployeeListComponent } from './component/departments/departm
         MatCardModule,
         MatFormFieldModule,
         //NgbModule,
-        FormsModule
+        FormsModule,
+        NgbModule
     ],
     providers: [EmployeeService, DepartmentService, SalariesService],
     bootstrap: [AppComponent]
