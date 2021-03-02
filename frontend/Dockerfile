@@ -6,7 +6,6 @@
 # Set the base image to use to Ubuntu
 # FROM ubuntu:19.04
 
-
 FROM node:10-alpine as node
 
 WORKDIR /usr/src/app

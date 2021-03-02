@@ -7,7 +7,8 @@
 # FROM ubuntu:19.04
 
 # OpenJDK JRE
-FROM openjdk:8
+#FROM openjdk:8
+FROM adoptopenjdk/openjdk8:alpine-slim
 
 #FROM tomcat:8.0.51-jre8-alpine
 
@@ -15,7 +16,7 @@ FROM openjdk:8
 MAINTAINER Dinesh
 
 # copy WAR into image
-COPY db-h2-service/target/db-h2-service-1.0.0.jar /db-h2-service.jar
+COPY target/db-h2-service-1.0.0.jar /db-h2-service.jar
 
 # run application with this command line 
 CMD ["java", "-jar", "-Dspring.profiles.active=default", "/db-h2-service.jar"]
