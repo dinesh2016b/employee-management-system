@@ -8,3 +8,7 @@ frontend/dist/*
 db/sql-scripts/*
 target/
 .idea/*
+ems/node_modules/*
+ems/node/*
+ems/e2e/*
+ems/dist/*

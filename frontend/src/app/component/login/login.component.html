@@ -2,19 +2,28 @@
     <div class="panel panel-default">
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading">
-                <span class="lead"> Login </span>
-            </div>
-            <div class="tablecontainer">
-                <div formGroupName="loginForm" (ngForm)="onSubmit()">
-                    <label>User Name
-                        <input type="text" formControlName="userName">
-                    </label>
-                    <label>Password
-                        <input type="text" formControlName="password">
-                    </label>
-                </div>
-            </div>
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Login to EMS</mat-card-title>
+                    <mat-card-subtitle>Please enter user name and password</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="tablecontainer">
+                        <div formGroupName="loginForm" (ngForm)="onSubmit()">
+                            <label>User Name
+                                <input type="text" formControlName="userName">
+                            </label>
+                            <label>Password
+                                <input type="text" formControlName="password">
+                            </label>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color='primary'>Login</button>
+                    <button mat-raised-button color='reset'>Reset</button>
+                </mat-card-actions>
+            </mat-card>
         </div>
     </div>
 </div>
