@@ -26,6 +26,7 @@ import { SalariesService } from './service/salaries.service';
 import { LoginComponent } from './component/login/login.component';
 import { DepartmentEmployeeListComponent } from './component/departments/department-employee-list/department-employee-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './component/header/header.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         SalariesComponent,
         EmployeeDetailsComponent,
         LoginComponent,
-        DepartmentEmployeeListComponent
+        DepartmentEmployeeListComponent,
+        HeaderComponent
   //      NgbdModalBasic,
         
     ],
