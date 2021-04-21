@@ -1,29 +1,41 @@
 <div class="generic-container">
     <div class="panel panel-default">
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title>Login to EMS</mat-card-title>
-                    <mat-card-subtitle>Please enter user name and password</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                    <div class="tablecontainer">
-                        <div formGroupName="loginForm" (ngForm)="onSubmit()">
-                            <label>User Name
-                                <input type="text" formControlName="userName">
-                            </label>
-                            <label>Password
-                                <input type="text" formControlName="password">
-                            </label>
-                        </div>
-                    </div>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-raised-button color='primary'>Login</button>
-                    <button mat-raised-button color='reset'>Reset</button>
-                </mat-card-actions>
-            </mat-card>
+        <!-- Default panel contents -->
+        <div class="panel-heading heading-text">
+            <span class="lead">&nbsp;</span>
         </div>
+
+        <div class="card" style="width: 25rem;">
+            <div class="card-header">
+                <h5 class="card-title">Login to EMS</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Please enter user name and password</h6>
+            </div>
+            <div class="card-body">
+                <div class="tablecontainer">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Username</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Password </span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Password"
+                            aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-primary btn-sm"> Login </button>
+                <button type="button" class="btn btn-secondary btn-sm"> Reset </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-heading heading-text">
+        <span class="lead">&nbsp;</span>
     </div>
 </div>
