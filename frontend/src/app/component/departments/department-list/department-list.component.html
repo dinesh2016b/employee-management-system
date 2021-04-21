@@ -3,7 +3,7 @@
     <div class="panel panel-default">
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading">
+            <div class="panel-heading heading-text">
                 <span class="lead">List of Department </span>
             </div>
             <div class="tablecontainer">
@@ -21,11 +21,11 @@
                             <td><span>{{ department.deptNo }}</span></td>
                             <td><span>{{ department.deptName }}</span></td>
                             <td>
-                                <a class="btn btn-success custom-width"
+                                <a class="btn btn-primary btn-sm"
                                     routerLink="/departments/{{ department.deptNo }}"> Edit </a>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-danger custom-width"
+                                <button type="button" class="btn btn-danger btn-sm"
                                     (click)="removeDepartment($event)">Remove</button>
                             </td>
                         </tr>
