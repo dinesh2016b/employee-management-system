@@ -7,34 +7,40 @@
 
         <div class="card" style="width: 25rem;">
             <div class="card-header">
-                <h5 class="card-title">Login to EMS</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Please enter user name and password</h6>
+                <h5 class="card-title">Welcome to EMS</h5>
             </div>
             <div class="card-body">
                 <div class="tablecontainer">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Username</span>
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+                            <small id="emailHelp" class="form-text text-muted">Username details</small>
                         </div>
-                        <input type="text" class="form-control" aria-label="Username"
-                            aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Password </span>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
-                        <input type="text" class="form-control" aria-label="Password"
-                            aria-describedby="basic-addon1">
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="card-footer">
+              <div align="right">
                 <button type="button" class="btn btn-primary btn-sm"> Login </button>
                 <button type="button" class="btn btn-secondary btn-sm"> Reset </button>
+              </div>
+              <div class="form-check">
+                    <label class="form-check-label" for="checkbox1">Forgot Username/Password > </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label" for="checkbox1">Signup > </label>
+              </div>
             </div>
         </div>
     </div>
-
+    <div class="panel-heading heading-text">
+        <span class="lead">&nbsp;</span>
+    </div>
     <div class="panel-heading heading-text">
         <span class="lead">&nbsp;</span>
     </div>
