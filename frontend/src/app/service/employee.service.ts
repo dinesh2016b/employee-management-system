@@ -13,7 +13,7 @@ export class EmployeeService {
     }
 
     public findById(employeesId): Observable<Employee[]> {
-        console.log('----> employeesId :'+employeesId)
+        console.log('----> employeesId :'+employeesId);
         console.log(`${this.employeeUrl + 'employees'}/${employeesId}`);
         return this.http.get<Employee[]>(`${this.employeeUrl}/${employeesId}`);
         //return this.http.get<Employee[]>((`${this.employeeUrl}/${employeesId}`),{ headers: { authorization: this.createBasicAuthToken("dinesh", "dinesh") }});
