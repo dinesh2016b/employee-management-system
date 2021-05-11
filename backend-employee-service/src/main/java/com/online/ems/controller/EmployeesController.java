@@ -31,7 +31,7 @@ import com.online.ems.service.EmployeeService;
 @RequestMapping("/employees")
 public class EmployeesController {
 
-	private Logger logger = LoggerFactory.getLogger(EmployeesController.class);
+	private final Logger logger = LoggerFactory.getLogger(EmployeesController.class);
 
 	@Autowired
 	private EmployeeService employeeService;

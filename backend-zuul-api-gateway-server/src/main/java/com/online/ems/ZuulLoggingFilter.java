@@ -12,7 +12,7 @@ import com.netflix.zuul.context.RequestContext;
 @Component
 public class ZuulLoggingFilter extends ZuulFilter {
 
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	public boolean shouldFilter() {

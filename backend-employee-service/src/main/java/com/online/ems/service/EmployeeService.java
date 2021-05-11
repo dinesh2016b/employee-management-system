@@ -22,7 +22,7 @@ import com.online.ems.model.Employees;
 @Service
 public class EmployeeService {
 
-	private Logger logger = LoggerFactory.getLogger(EmployeesController.class);
+	private final Logger logger = LoggerFactory.getLogger(EmployeesController.class);
 	
 	@Autowired
 	private DepartmentServiceProxy departmentServiceProxy;
@@ -57,7 +57,7 @@ public class EmployeeService {
 			SalariesBean salariesBean = salariesServiceProxy.getSalariesByEmployeeId(employees.getEmpNo());
 			employeesBean.setSalariesBean(salariesBean);
 
-			logger.debug("------------> getEmployeesById() : " + employeesBean.toString());
+			logger.debug("------------> getEmployeesById() : " + employeesBean);
 
 			employeesBeans.add(employeesBean);
 		}
@@ -90,7 +90,7 @@ public class EmployeeService {
 		SalariesBean salariesBean = salariesServiceProxy.getSalariesByEmployeeId(employees.getEmpNo());
 		employeesBean.setSalariesBean(salariesBean);
 
-		logger.debug("------------> getEmployeesById() : " + employeesBean.toString());
+		logger.debug("------------> getEmployeesById() : " + employeesBean);
 
 		return employeesBean;
 	}

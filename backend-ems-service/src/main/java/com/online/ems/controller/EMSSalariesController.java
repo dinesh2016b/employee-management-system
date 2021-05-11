@@ -24,7 +24,7 @@ import com.online.ems.service.SalariesServiceProxy;
 @RequestMapping("/ems-salaries")
 public class EMSSalariesController {
 
-	private Logger logger = LoggerFactory.getLogger(EMSSalariesController.class);
+	private final Logger logger = LoggerFactory.getLogger(EMSSalariesController.class);
 
 	@Autowired
 	private SalariesServiceProxy salariesServiceProxy;

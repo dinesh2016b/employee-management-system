@@ -28,7 +28,7 @@ import com.online.ems.service.EmployeeServiceProxy;
 @RequestMapping("/ems-employees")
 public class EMSEmployeesController {
 
-	private Logger logger = LoggerFactory.getLogger(EMSEmployeesController.class);
+	private final Logger logger = LoggerFactory.getLogger(EMSEmployeesController.class);
 
 	@Autowired
 	private EmployeeServiceProxy employeeServiceProxy;
