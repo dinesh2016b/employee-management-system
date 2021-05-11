@@ -1,32 +1,25 @@
 sudo apt-get install mysql-server
-
-sugar
-washing powder 
-hand wash
-toilet paper 
-
-
+-------------
 GRANT ALL PRIVILEGES ON employees.* TO 'employee'@'10.24.231.113' IDENTIFIED BY 'employee' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON *.* TO 'USERNAME'@'1.2.3.4' IDENTIFIED BY 'PASSWORD' WITH GRANT OPTION;
-
+-------------
 
 CREATE USER 'test'@'localhost' IDENTIFIED BY 'password';
-
 GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
-
+-------------
 
 CREATE USER 'root'@'172.17.0.2' IDENTIFIED BY 'Dinesh@123';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.17.0.2' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
+-------------
 
 CREATE USER 'root'@'127.0.0.1' IDENTIFIED BY 'Dinesh@123';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'127.0.0.1' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
+-------------
 
 CREATE USER 'root'@'localhost' IDENTIFIED BY 'Dinesh@123';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
-
 ------------------
-
 Set up MySQL for remote access on Ubuntu Server

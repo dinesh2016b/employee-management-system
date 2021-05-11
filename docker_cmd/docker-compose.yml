@@ -1,0 +1,169 @@
+version: "3"
+services:
+  backend-eureka-server:
+    image: dinesh2016b/backend-eureka-server
+    container_name: backend-eureka-server
+    hostname: backend-eureka-server
+    build:
+        context: .
+        dockerfile: ./backend-eureka-server/Dockerfile
+    expose:
+      - 8761
+    ports:
+      - 8761:8761
+    networks:
+      - ems-networks
+  backend-zuul-api-gateway-server:
+    image: dinesh2016b/backend-zuul-api-gateway-server
+    container_name: backend-zuul-api-gateway-server
+    hostname: backend-zuul-api-gateway-server
+    build:
+        context: .
+        dockerfile: ./backend-zuul-api-gateway-server/Dockerfile
+    expose:
+      - 8765
+    ports:
+      - 8765:8765
+    networks:
+      - ems-networks
+    links:
+      - backend-eureka-server:backend-eureka-server
+    depends_on:
+      - backend-eureka-server
+  ems-mysqldb:
+    image: dinesh2016b/ems-mysqldb
+    container_name: ems-mysqldb
+    build:
+        context: .
+        dockerfile: ./db-mysql-service/Dockerfile
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+      - ems-networks
+    volumes:
+      - ems-mysql-volumes:/var/lib/mysql
+  backend-department-service:
+    image: dinesh2016b/backend-department-service
+    container_name: backend-department-service
+    hostname: backend-department-service
+    build:
+        context: .
+        dockerfile: ./backend-department-service/Dockerfile
+    expose:
+      - 8091
+    ports:
+      - 8091:891
+    networks:
+      - ems-networks
+    links:
+      - backend-eureka-server:backend-eureka-server
+      - backend-zuul-api-gateway-server:backend-zuul-api-gateway-server
+    depends_on:
+      - backend-eureka-server
+      - backend-zuul-api-gateway-server
+      - ems-mysqldb
+  backend-employee-service:
+    image: dinesh2016b/backend-employee-service
+    container_name: backend-employee-service
+    hostname: backend-employee-service
+    build:
+        context: .
+        dockerfile: ./backend-employee-service/Dockerfile
+    expose:
+      - 8092
+    ports:
+      - 8092:8092
+    networks:
+      - ems-networks
+    links:
+      - backend-eureka-server:backend-eureka-server
+      - backend-zuul-api-gateway-server:backend-zuul-api-gateway-server
+    depends_on:
+      - backend-eureka-server
+      - backend-zuul-api-gateway-server
+      - ems-mysqldb
+  backend-salaries-service:
+    image: dinesh2016b/backend-salaries-service
+    container_name: backend-salaries-service
+    hostname: backend-salaries-service
+    build:
+        context: .
+        dockerfile: ./backend-salaries-service/Dockerfile
+    expose:
+      - 8093
+    ports:
+      - 8093:8093
+    networks:
+      - ems-networks
+    links:
+      - backend-eureka-server:backend-eureka-server
+      - backend-zuul-api-gateway-server:backend-zuul-api-gateway-server
+    depends_on:
+      - backend-eureka-server
+      - backend-zuul-api-gateway-server
+      - ems-mysqldb
+  backend-config-server:
+    image: dinesh2016b/backend-config-server
+    container_name: backend-config-server
+    hostname: backend-config-server
+    build:
+        context: .
+        dockerfile: ./backend-config-server/Dockerfile
+    expose:
+      - 8090
+    ports:
+      - 8090:8090
+    networks:
+      - ems-networks
+    links:
+      - backend-eureka-server:backend-eureka-server
+      - backend-zuul-api-gateway-server:backend-zuul-api-gateway-server
+    depends_on:
+      - backend-eureka-server
+      - backend-zuul-api-gateway-server
+  backend-ems-service:
+    image: dinesh2016b/backend-ems-service
+    container_name: backend-ems-service
+    hostname: backend-ems-service
+    build:
+      context: .
+      dockerfile: ./backend-ems-service/Dockerfile
+    expose:
+      - 8095
+    ports:
+      - 8095:8095
+    networks:
+      - ems-networks
+    links:
+      - backend-eureka-server:backend-eureka-server
+      - backend-zuul-api-gateway-server:backend-zuul-api-gateway-server
+      - backend-config-server:backend-config-server
+      - backend-department-service:backend-department-service
+      - backend-salaries-service:backend-salaries-service
+      - backend-employee-service:backend-employee-service
+    depends_on:
+      - backend-eureka-server
+      - backend-zuul-api-gateway-server
+      - backend-config-server
+      - backend-department-service
+      - backend-salaries-service
+      - backend-employee-service
+  ems-nginx:
+    image: dinesh2016b/ems-nginx
+    container_name: ems-nginx
+    hostname: ems-nginx
+    build:
+        context: .
+        dockerfile: ./frontend/Dockerfile
+    volumes:
+      - ./frontend/src/main/web/dist/app:/usr/share/nginx/html
+    ports:
+      - 8080:80
+    networks:
+      - ems-networks
+volumes:
+  ems-mysql-volumes:
+networks:
+  ems-networks:

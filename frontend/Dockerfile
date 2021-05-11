@@ -6,20 +6,21 @@
 # Set the base image to use to Ubuntu
 # FROM ubuntu:19.04
 
-
 FROM node:10-alpine as node
 
 WORKDIR /usr/src/app
 
 RUN ls /usr/src/app
 
-COPY package*.json /usr/src/app
+RUN npm install -g @angular/cli
+
+COPY frontend/package.json /usr/src/app
 
 RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npm start
 
 FROM nginx:1.13.3-alpine
 ## Remove default nginx website

@@ -1,5 +1,6 @@
 # OpenJDK JRE
-FROM openjdk:8
+#FROM openjdk:8
+FROM adoptopenjdk/openjdk11:alpine-jre
 
 # Set the file maintainer (your name - the file's author)
 MAINTAINER Dinesh
@@ -8,4 +9,4 @@ MAINTAINER Dinesh
 COPY backend-salaries-service/target/backend-salaries-service-1.0.0.jar backend-salaries-service.jar
 
 # run application with this command line 
-CMD ["java", "-jar", "-Dspring.profiles.active=docker", "backend-salaries-service.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=cloud", "backend-salaries-service.jar"]

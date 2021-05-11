@@ -1,20 +1,47 @@
 <div class="generic-container">
     <div class="panel panel-default">
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">
-                <span class="lead"> Login </span>
+        <!-- Default panel contents -->
+        <div class="panel-heading heading-text">
+            <span class="lead">&nbsp;</span>
+        </div>
+
+        <div class="card" style="width: 25rem;">
+            <div class="card-header">
+                <h5 class="card-title">Welcome to EMS</h5>
             </div>
-            <div class="tablecontainer">
-                <div formGroupName="loginForm" (ngForm)="onSubmit()">
-                    <label>User Name
-                        <input type="text" formControlName="userName">
-                    </label>
-                    <label>Password
-                        <input type="text" formControlName="password">
-                    </label>
+            <div class="card-body">
+                <div class="tablecontainer">
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+                            <small id="emailHelp" class="form-text text-muted">Username details</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                    </form>
                 </div>
             </div>
+            <div class="card-footer">
+              <div align="right">
+                <button type="button" class="btn btn-primary btn-sm"> Login </button>
+                <button type="button" class="btn btn-secondary btn-sm"> Reset </button>
+              </div>
+              <div class="form-check">
+                    <label class="form-check-label" for="checkbox1">Forgot Username/Password > </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label" for="checkbox1">Signup > </label>
+              </div>
+            </div>
         </div>
+    </div>
+    <div class="panel-heading heading-text">
+        <span class="lead">&nbsp;</span>
+    </div>
+    <div class="panel-heading heading-text">
+        <span class="lead">&nbsp;</span>
     </div>
 </div>
