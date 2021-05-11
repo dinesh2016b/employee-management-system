@@ -31,7 +31,7 @@ import com.online.ems.service.DepartmentServiceProxy;
 @RequestMapping("/ems-departments")
 public class EMSDepartmentsController {
 
-	private Logger logger = LoggerFactory.getLogger(EMSDepartmentsController.class);
+	private final Logger logger = LoggerFactory.getLogger(EMSDepartmentsController.class);
 
 	@Autowired
 	private DepartmentServiceProxy departmentServiceProxy;

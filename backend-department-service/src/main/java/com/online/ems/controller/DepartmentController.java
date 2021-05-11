@@ -33,7 +33,7 @@ import com.online.ems.model.Departments;
 @RequestMapping("/departments")
 public class DepartmentController {
 
-	private Logger logger = LoggerFactory.getLogger(DepartmentController.class);
+	private final Logger logger = LoggerFactory.getLogger(DepartmentController.class);
 
 	@Autowired
 	private DepartmentRepositoryDAO departmentRepository;

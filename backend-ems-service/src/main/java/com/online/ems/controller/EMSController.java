@@ -25,7 +25,7 @@ import com.online.ems.service.ConfigurationService;
 @RequestMapping("/ems-details")
 public class EMSController {
 
-	private Logger logger = LoggerFactory.getLogger(EMSController.class);
+	private final Logger logger = LoggerFactory.getLogger(EMSController.class);
 
 	@Autowired
 	private ConfigurationService config;
