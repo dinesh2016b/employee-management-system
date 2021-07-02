@@ -7,7 +7,7 @@
   </parent>
   <artifactId>backend-config-server</artifactId>
   <name>backend-config-server</name>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<dependencies>
   	<dependency>

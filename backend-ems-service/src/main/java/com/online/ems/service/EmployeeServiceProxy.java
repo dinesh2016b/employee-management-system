@@ -21,14 +21,14 @@ public interface EmployeeServiceProxy {
 
 	// @GetMapping(path = "/employees/pageNo/{pageNo}/size/{size}")
 	@GetMapping(path = "/backend-employee-service/employees/pageNo/{pageNo}/size/{size}")
-	public List<Resource<EmployeesBean>> getEmployees(@PathVariable(value = "pageNo") int pageNo,
-			@PathVariable(value = "size") int size) throws Exception;
+    List<Resource<EmployeesBean>> getEmployees(@PathVariable(value = "pageNo") int pageNo,
+                                               @PathVariable(value = "size") int size) throws Exception;
 
 	// @GetMapping(path = "/employees/{id}")
 	@GetMapping(path = "/backend-employee-service/employees/{id}")
-	public Resource<EmployeesBean> getEmployeeById(@PathVariable(value = "id") Long employeeId) throws Exception;
+    Resource<EmployeesBean> getEmployeeById(@PathVariable(value = "id") Long employeeId) throws Exception;
 
 	// @PostMapping(path = "/employees")
 	@PostMapping(path = "/backend-employee-service/employees")
-	public Resource<EmployeesBean> addEmployee(@RequestBody EmployeesBean employeesBean) throws Exception;
+    Resource<EmployeesBean> addEmployee(@RequestBody EmployeesBean employeesBean) throws Exception;
 }

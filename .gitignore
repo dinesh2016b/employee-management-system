@@ -12,3 +12,5 @@ ems/node_modules/*
 ems/node/*
 ems/e2e/*
 ems/dist/*
+.metadata/*
+.metadata/.plugins/*
