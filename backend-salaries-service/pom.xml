@@ -8,7 +8,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>backend-salaries-service</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -17,6 +17,12 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>employee-management-system</groupId>
+			<artifactId>backend-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

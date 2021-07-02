@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>backend-eureka-server</artifactId>
 	<name>backend-eureka-server</name>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>
