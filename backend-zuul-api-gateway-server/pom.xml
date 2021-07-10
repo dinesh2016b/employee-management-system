@@ -9,7 +9,8 @@
 	</parent>
 	<artifactId>backend-zuul-api-gateway-server</artifactId>
 	<name>backend-zuul-api-gateway-server</name>
-
+	<packaging>war</packaging>
+	
 	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -26,14 +27,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		
 	</dependencies>
 
 	<dependencyManagement>
@@ -62,18 +55,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!-- <configuration> <excludeDevtools>false</excludeDevtools> </configuration> -->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
 				</configuration>
 			</plugin>
 
 		</plugins>
 	</build>
-	<packaging>war</packaging>
+	
 </project>

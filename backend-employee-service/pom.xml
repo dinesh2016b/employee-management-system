@@ -22,7 +22,7 @@
 			<artifactId>backend-common</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -82,9 +82,9 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
+				<groupId>employee-management-system</groupId>
+				<artifactId>backend-common-dependency</artifactId>
+				<version>1.0.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -107,21 +107,14 @@
 				<configuration>
 					<mainClass>com.online.ems.EmployeeEMSApplication</mainClass>
 				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
 				</configuration>
 			</plugin>
 

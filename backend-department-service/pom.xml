@@ -82,9 +82,9 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
+				<groupId>employee-management-system</groupId>
+				<artifactId>backend-common-dependency</artifactId>
+				<version>1.0.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -97,6 +97,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 			</plugin>
+	
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -107,13 +108,6 @@
 				<configuration>
 					<mainClass>com.online.ems.DepartmentEMSApplication</mainClass>
 				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 			<plugin>
