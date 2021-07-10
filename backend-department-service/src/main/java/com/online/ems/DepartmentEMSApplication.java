@@ -6,10 +6,10 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication
 @EnableFeignClients
 @EnableEurekaClient
 //@EnableDiscoveryClient
+@SpringBootApplication(scanBasePackages = "com.online.ems")
 public class DepartmentEMSApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {

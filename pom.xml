@@ -16,23 +16,26 @@
 	</parent>
 
 	<modules>
+		<module>backend-common</module>
+		<module>backend-common-dependency</module>
 		<module>backend-config-server</module>
-		<module>backend-employee-service</module>
 		<module>backend-department-service</module>
 		<module>backend-salaries-service</module>
-		<module>backend-ems-service</module>		
+		<module>backend-ems-service</module>
+		<module>backend-employee-service</module>
 		<module>backend-eureka-server</module>
 		<module>backend-zuul-api-gateway-server</module>
 		<!-- <module>frontend</module> -->
-		<module>backend-common</module>
-		<module>backend-common-service</module>
 	</modules>
 
 	<build>
-		<plugins>			
+		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<classifier>exec</classifier>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
