@@ -11,7 +11,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 //@EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "com.online.ems")
 public class EmployeeEMSApplication extends SpringBootServletInitializer {
-
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeEMSApplication.class, args);
 	}
