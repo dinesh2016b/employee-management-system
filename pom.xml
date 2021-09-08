@@ -16,8 +16,8 @@
 	</parent>
 
 	<modules>
-		<module>backend-common</module>
 		<module>backend-common-dependency</module>
+		<module>backend-common</module>
 		<module>backend-config-server</module>
 		<module>backend-department-service</module>
 		<module>backend-salaries-service</module>
