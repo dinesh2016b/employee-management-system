@@ -14,3 +14,4 @@ ems/e2e/*
 ems/dist/*
 .metadata/*
 .metadata/.plugins/*
+/.metadata/

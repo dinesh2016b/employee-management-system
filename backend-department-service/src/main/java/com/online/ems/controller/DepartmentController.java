@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -38,7 +40,8 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentRepositoryDAO departmentRepository;
 
-	@GetMapping(path = "/pageNo/{pageNo}/size/{size}")
+	@GetMapping(path = "/pageNo/{pageNo}/size/{size}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
 	public ResponseEntity<List<DepartmentsBean>> getAllDepartments(@PathVariable(value = "pageNo") int pageNo,
 			@PathVariable(value = "size") int size) throws Exception {
 		try {
@@ -62,7 +65,7 @@ public class DepartmentController {
 		}
 	}
 
-	@GetMapping(path = "/{id}")
+	@GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<DepartmentsBean> getDepartmentsById(@PathVariable(value = "id") String departmentId)
 			throws Exception {
 
@@ -83,7 +86,7 @@ public class DepartmentController {
 		}
 	}
 
-	@PostMapping(path = "/")
+	@PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Departments> createDepartment(@Valid @RequestBody Departments department) throws Exception {
 
 		try {
@@ -99,7 +102,7 @@ public class DepartmentController {
 
 	}
 
-	@PutMapping(path = "/{deptId}")
+	@PutMapping(path = "/{deptId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Departments> updateEmployee(@PathVariable(value = "deptId") String departmentId,
 			@Valid @RequestBody Departments employeeDetails) throws ResourceNotFoundException {
 
