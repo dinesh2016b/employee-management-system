@@ -27,7 +27,12 @@ export class DepartmentDetailsComponent implements OnInit {
     //this.departments = new Departments(this.route.snapshot.paramMap.get('id'), '');
 
     this.departmentsEntry.emit(this.departments);
-    this.departmentService.findById(this.route.snapshot.paramMap.get('id')).subscribe(departments => this.departments = this.departments);
+    this.departmentService.findById(this.route.snapshot.paramMap.get('id'))
+    .subscribe(
+      departments => {
+        this.departments = this.departments
+      }
+    );
 
     console.log('-------> departments.deptNo      ----> ' + this.departments.deptNo);
     console.log('-------> departments.deptName  ----> ' + this.departments.deptName);

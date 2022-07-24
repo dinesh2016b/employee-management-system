@@ -9,7 +9,7 @@ import { LoginComponent } from './component/login/login.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/ems-employees', pathMatch: 'full' },
+    { path: '', redirectTo: '/ems-login', pathMatch: 'full' },
     { path: 'ems-employees', component: EmployeeListComponent },
     { path: 'ems-employees/:id', component: EmployeeDetailsComponent },
     { path: 'ems-departments', component: DepartmentListComponent },

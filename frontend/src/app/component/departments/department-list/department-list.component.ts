@@ -9,15 +9,19 @@ import { DepartmentService } from '../../../service/department.service';
 })
 
 export class DepartmentListComponent implements OnInit {
-
+  TOKEN_KEY = 'auth-token';
   departments: Departments[];
 
   constructor(private departmentService: DepartmentService) { }
 
   ngOnInit() {
-    this.departmentService.findAll().subscribe(data => {
-      this.departments = data;
-    });
+    let jwtToken = window.sessionStorage.getItem(this.TOKEN_KEY);
+    if (jwtToken == null || jwtToken === '' || jwtToken != undefined) {
+      this.departmentService.findAll(jwtToken).subscribe(data => {
+        this.departments = data;
+        sessionStorage.setItem("departments", JSON.stringify(this.departments));
+      });
+    }
   }
 
   editDepartment(event) {
