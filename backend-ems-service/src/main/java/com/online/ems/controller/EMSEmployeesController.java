@@ -5,8 +5,6 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.MediaType;
@@ -18,17 +16,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.online.ems.bean.DepartmentsBean;
 import com.online.ems.bean.EmployeesBean;
 import com.online.ems.service.DepartmentServiceProxy;
 import com.online.ems.service.EmployeeServiceProxy;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/ems-employees")
 public class EMSEmployeesController {
-
-	private final Logger logger = LoggerFactory.getLogger(EMSEmployeesController.class);
 
 	@Autowired
 	private EmployeeServiceProxy employeeServiceProxy;

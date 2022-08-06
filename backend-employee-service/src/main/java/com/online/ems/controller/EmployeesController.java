@@ -26,12 +26,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.online.ems.bean.EmployeesBean;
 import com.online.ems.service.EmployeeService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 @CrossOrigin(origins = "https://localhost:8080")
 @RequestMapping("/employees")
 public class EmployeesController {
-
-	private final Logger logger = LoggerFactory.getLogger(EmployeesController.class);
 
 	@Autowired
 	private EmployeeService employeeService;

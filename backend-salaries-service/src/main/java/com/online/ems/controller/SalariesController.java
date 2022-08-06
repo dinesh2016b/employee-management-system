@@ -8,8 +8,6 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,11 +24,12 @@ import com.online.ems.dao.SalariesRepositoryDAO;
 import com.online.ems.exception.ResourceNotFoundException;
 import com.online.ems.model.Salaries;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 @CrossOrigin(origins = "http://localhost:8080")
 public class SalariesController {
-
-	private Logger logger = LoggerFactory.getLogger(SalariesController.class);
 
 	@Autowired
 	private SalariesRepositoryDAO salariesRepositoryDAO;

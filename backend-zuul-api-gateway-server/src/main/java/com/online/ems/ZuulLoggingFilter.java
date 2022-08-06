@@ -2,17 +2,16 @@ package com.online.ems;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
-@Component
-public class ZuulLoggingFilter extends ZuulFilter {
+import lombok.extern.slf4j.Slf4j;
 
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+@Component
+@Slf4j
+public class ZuulLoggingFilter extends ZuulFilter {
 
 	@Override
 	public boolean shouldFilter() {

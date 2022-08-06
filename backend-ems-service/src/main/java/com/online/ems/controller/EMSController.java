@@ -3,8 +3,6 @@
  */
 package com.online.ems.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,17 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.online.ems.bean.EMSBean;
 import com.online.ems.service.ConfigurationService;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author dinesh
  *
  */
 
 @RestController
+@Slf4j
 @CrossOrigin(value = "http://localhost:8080")
 @RequestMapping("/ems-details")
 public class EMSController {
-
-	private final Logger logger = LoggerFactory.getLogger(EMSController.class);
 
 	@Autowired
 	private ConfigurationService config;

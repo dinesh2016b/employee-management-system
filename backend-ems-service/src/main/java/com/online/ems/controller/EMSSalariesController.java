@@ -18,13 +18,13 @@ import com.online.ems.bean.EmployeesBean;
 import com.online.ems.bean.SalariesBean;
 import com.online.ems.service.SalariesServiceProxy;
 
-@RestController
-@CrossOrigin(origins = "http://localhost:8080")
+import lombok.extern.slf4j.Slf4j;
 
+@RestController
+@Slf4j
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/ems-salaries")
 public class EMSSalariesController {
-
-	private final Logger logger = LoggerFactory.getLogger(EMSSalariesController.class);
 
 	@Autowired
 	private SalariesServiceProxy salariesServiceProxy;

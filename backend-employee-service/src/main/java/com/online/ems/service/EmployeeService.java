@@ -19,11 +19,12 @@ import com.online.ems.dao.EmployeeRepository;
 import com.online.ems.exception.ResourceNotFoundException;
 import com.online.ems.model.Employees;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class EmployeeService {
 
-	private final Logger logger = LoggerFactory.getLogger(EmployeesController.class);
-	
 	@Autowired
 	private DepartmentServiceProxy departmentServiceProxy;
 	

@@ -8,8 +8,6 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,12 +26,13 @@ import com.online.ems.dao.DepartmentRepositoryDAO;
 import com.online.ems.exception.ResourceNotFoundException;
 import com.online.ems.model.Departments;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/departments")
 public class DepartmentController {
-
-	private final Logger logger = LoggerFactory.getLogger(DepartmentController.class);
 
 	@Autowired
 	private DepartmentRepositoryDAO departmentRepository;

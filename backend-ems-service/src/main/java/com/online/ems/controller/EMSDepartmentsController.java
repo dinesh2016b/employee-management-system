@@ -26,12 +26,13 @@ import com.online.ems.bean.DepartmentsBean;
 import com.online.ems.exception.ResourceNotFoundException;
 import com.online.ems.service.DepartmentServiceProxy;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/ems-departments")
 public class EMSDepartmentsController {
-
-	private final Logger logger = LoggerFactory.getLogger(EMSDepartmentsController.class);
 
 	@Autowired
 	private DepartmentServiceProxy departmentServiceProxy;
