@@ -1,9 +1,10 @@
-html{
+html {
 	background-color: none;
 }
 
 body, #mainWrapper {
-	background:url(../images/background-blue-white.png) repeat-x scroll left top #b6bfa1;
+	background: url(../images/background-blue-white.png) repeat-x scroll
+		left top #b6bfa1;
 	color: #666;
 	font-family: verdana;
 	font-size: 10px;

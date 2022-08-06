@@ -1,31 +1,42 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Employee } from '../model/employee';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { BackendApiService } from './backend-api.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root'})
 export class EmployeeService {
 
-    private employeeUrl: string = 'http://localhost:8095/ems-employees';
+    private employeeUrl: string = 'http://localhost:8080/employees';
+    private employeeDataSubject: BehaviorSubject<Employee[]>;
+    private employeeData: Observable<Employee[]>;
+    private employees: Employee[];
 
-    constructor(private http: HttpClient) {
-        // this.employeeUrl = 'http://localhost:8080/employees';
+    constructor(private backendAPISerivce: BackendApiService) {
+        this.employeeDataSubject = new BehaviorSubject(this.employees);
+        this.employeeData = this.employeeDataSubject.asObservable();
     }
 
-    public findById(employeesId): Observable<Employee[]> {
-        console.log('----> employeesId :'+employeesId);
+    public findById(employeesId) {
+        console.log('----> employeesId :' + employeesId);
         console.log(`${this.employeeUrl + 'employees'}/${employeesId}`);
-        return this.http.get<Employee[]>(`${this.employeeUrl}/${employeesId}`);
+
+        return this.backendAPISerivce.sendGetAPIRequest(`${this.employeeUrl}/${employeesId}`);
+            
+        //return this.http.get<Employee[]>(`${this.employeeUrl}/${employeesId}`);
         //return this.http.get<Employee[]>((`${this.employeeUrl}/${employeesId}`),{ headers: { authorization: this.createBasicAuthToken("dinesh", "dinesh") }});
     }
 
-    public findAll(): Observable<Employee[]> {
-        return this.http.get<Employee[]>((this.employeeUrl + '/pageNo/0/size/10'));
+    public findAll(jwtToken: String) {
+        return this.backendAPISerivce.sendPostRequest(this.employeeUrl + '/pageNo/0/size/10', {jwtToken});
+
+        //return this.http.get<Employee[]>((this.employeeUrl + '/pageNo/0/size/10'));
         //return this.http.get<Employee[]>((this.employeeUrl + '/pageNo/0/size/10'), { headers: { authorization: this.createBasicAuthToken("dinesh", "dinesh") }});
     }
 
     public save(employee: Employee) {
-        return this.http.post<Employee>(this.employeeUrl, employee);
+        return this.backendAPISerivce.sendPostRequest(this.employeeUrl, employee);
+
+        //return this.http.post<Employee>(this.employeeUrl, employee);
     }
 
     createBasicAuthToken(username: String, password: String) {

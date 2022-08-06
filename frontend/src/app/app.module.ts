@@ -23,11 +23,7 @@ import { LoginComponent } from './component/login/login.component';
 import { HeaderComponent } from './component/header/header.component';
 import { DepartmentEmployeeListComponent } from './component/departments/department-employee-list/department-employee-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-// Service
-import { EmployeeService } from './service/employee.service';
-import { DepartmentService } from './service/department.service';
-import { SalariesService } from './service/salaries.service';
+//import { httpInterceptorProviders } from './service/httpRequestInterceptor';
 
 @NgModule({
     declarations: [
@@ -42,8 +38,7 @@ import { SalariesService } from './service/salaries.service';
         LoginComponent,
         DepartmentEmployeeListComponent,
         HeaderComponent
-  //      NgbdModalBasic,
-        
+        //NgbdModalBasic,
     ],
     imports: [
         BrowserModule,
@@ -59,7 +54,8 @@ import { SalariesService } from './service/salaries.service';
         FormsModule,
         NgbModule
     ],
-    providers: [EmployeeService, DepartmentService, SalariesService],
+    providers: [],
+    //providers: [httpInterceptorProviders],
     bootstrap: [AppComponent]
 })
 

@@ -1,58 +1,60 @@
 <div class="container ">
-    <br>
-    <div class="row">
-        <div class="offset-2 col-6 ">
-            <form class="form-horizontal shadow p-3 mb-5 bg-white rounded" #f="ngForm" (ngSubmit)="updateEmployee()"
-                novalidate>
-                <div>
-                    <label class="control-label col-m-10">
-                        <h3>Update Employee </h3>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-m-10" for="address">EmpNo: </label>
-                    <div class="col-m-10">
-                        <input type="text" class="form-control" name="empNo" [(ngModel)]="employee.empNo"
-                            placeholder="" />
-                    </div>
-                </div>
-                <div class=" form-group">
-                    <label class="control-label col-m-10" for="firstName">First Name: </label>
-                    <div class="col-m-10">
-                        <input type="text" class="form-control" name="firstName" [(ngModel)]="employee.firstName"
-                            placeholder="" />
-                    </div>
-                </div>
-                <div class=" form-group">
-                    <label class="control-label col-m-10" for="lastName">Last Name: </label>
-                    <div class="col-m-10">
-                        <input type="text" class="form-control" name="lastName" [(ngModel)]="employee.lastName"
-                            placeholder="" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-m-10" for="birthDate">Birth Date: </label>
-                    <div class="col-m-10">
-                        <input type="text" class="form-control" name="birthDate" [(ngModel)]="employee.birthDate"
-                            placeholder="" />
-                    </div>
-                </div>
-                <br />
-                <div class="form-group">
-                    <div class="col-m-offset-2 col-m-4">
-                        <button type="submit" class="btn  btn-primary" name="Update">
-                            Update
-                        </button>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-m-offset-2 col-m-4">
-                        <button type="submit" class="btn" name="close" (click)="activeModal.dismiss('Cross click')">
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+	<br>
+	<div class="row">
+		<div class="offset-2 col-6 ">
+			<form class="form-horizontal shadow p-3 mb-5 bg-white rounded"
+				#f="ngForm" (ngSubmit)="updateEmployee()" novalidate>
+				<div>
+					<label class="control-label col-m-10">
+						<h3>Update Employee</h3>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-m-10" for="address">EmpNo:
+					</label>
+					<div class="col-m-10">
+						<input type="text" class="form-control" name="empNo"
+							[(ngModel)]="employee.empNo" placeholder="" />
+					</div>
+				</div>
+				<div class=" form-group">
+					<label class="control-label col-m-10" for="firstName">First
+						Name: </label>
+					<div class="col-m-10">
+						<input type="text" class="form-control" name="firstName"
+							[(ngModel)]="employee.firstName" placeholder="" />
+					</div>
+				</div>
+				<div class=" form-group">
+					<label class="control-label col-m-10" for="lastName">Last
+						Name: </label>
+					<div class="col-m-10">
+						<input type="text" class="form-control" name="lastName"
+							[(ngModel)]="employee.lastName" placeholder="" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-m-10" for="birthDate">Birth
+						Date: </label>
+					<div class="col-m-10">
+						<input type="text" class="form-control" name="birthDate"
+							[(ngModel)]="employee.birthDate" placeholder="" />
+					</div>
+				</div>
+				<br />
+				<div class="form-group">
+					<div class="col-m-offset-2 col-m-4">
+						<button type="submit" class="btn  btn-primary" name="Update">
+							Update</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-m-offset-2 col-m-4">
+						<button type="submit" class="btn" name="close"
+							(click)="activeModal.dismiss('Cross click')">Close</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
