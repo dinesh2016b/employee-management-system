@@ -8,7 +8,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>backend-employee-service</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<properties>
 	 	<java.version>11</java.version>
@@ -109,6 +109,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>com.online.ems.EmployeeEMSApplication</mainClass>
+					<layout>JAR</layout>
 				</configuration>
 			</plugin>
 

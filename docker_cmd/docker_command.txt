@@ -1,3 +1,7 @@
+## Maven commands
+mvn clean install -Dmaven.test.skip=true
+mvn spring-boot:run
+
 # Build all service
 docker-compose -f "docker-compose.yml" up -d --build
 
@@ -45,6 +49,7 @@ docker push dinesh2016b/backend-salaries-service:latest
 docker push dinesh2016b/backend-ems-service:latest
 docker push dinesh2016b/backend-config-server:latest
 docker push dinesh2016b/ems-mysqldb:latest
+docker push dinesh2016b/ems-nginx:latest
 
 # Access container remotly / ssh
 docker exec -it ems-mysqldb mysql -uroot -p

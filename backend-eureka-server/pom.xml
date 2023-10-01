@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>backend-eureka-server</artifactId>
 	<name>backend-eureka-server</name>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<properties>
 		<java.version>11</java.version>
@@ -53,6 +53,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<!-- <configuration> <excludeDevtools>false</excludeDevtools> </configuration> -->
+				<configuration>
+					<layout>JAR</layout>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

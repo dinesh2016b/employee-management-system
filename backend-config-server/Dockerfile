@@ -1,6 +1,7 @@
 # OpenJDK JRE
 #FROM openjdk:8
-FROM adoptopenjdk/openjdk11:alpine-jre
+#FROM adoptopenjdk/openjdk11:alpine-jre
+FROM openjdk:11-jre-slim
 
 # Set the file maintainer (your name - the file's author)
 MAINTAINER Dinesh

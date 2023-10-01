@@ -8,7 +8,8 @@
 
 # OpenJDK JRE
 #FROM openjdk:8
-FROM adoptopenjdk/openjdk8:alpine-slim
+#FROM adoptopenjdk/openjdk8:alpine-slim
+FROM openjdk:11-jre-slim
 
 #FROM tomcat:8.0.51-jre8-alpine
 
