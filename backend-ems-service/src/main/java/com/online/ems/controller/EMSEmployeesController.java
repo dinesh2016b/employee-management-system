@@ -1,14 +1,14 @@
 package com.online.ems.controller;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,12 +37,12 @@ public class EMSEmployeesController {
 	private DepartmentServiceProxy departmentServiceProxy;
 
 	@GetMapping(path = "/pageNo/{pageNo}/size/{size}")
-	public List<Resource<EmployeesBean>> getEmployees(@PathVariable(value = "pageNo") int pageNo,
+	public List<EntityModel<EmployeesBean>> getEmployees(@PathVariable(value = "pageNo") int pageNo,
 			@PathVariable(value = "size") int size) throws Exception {
 
 		try {
 			logger.debug("------------> getEmployees()");
-			List<Resource<EmployeesBean>> employeesBeans = employeeServiceProxy.getEmployees(pageNo, size);
+			List<EntityModel<EmployeesBean>> employeesBeans = employeeServiceProxy.getEmployees(pageNo, size);
 			return employeesBeans;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -52,11 +52,11 @@ public class EMSEmployeesController {
 	}
 
 	@GetMapping(path = "/{id}")
-	public Resource<EmployeesBean> getEmployeeById(@PathVariable(value = "id") Long employeeId) throws Exception {
+	public EntityModel<EmployeesBean> getEmployeeById(@PathVariable(value = "id") Long employeeId) throws Exception {
 
 		try {
 			logger.debug("---------> employeeServiceProxy.getEmployeeById() ");
-			Resource<EmployeesBean> employesResource = employeeServiceProxy.getEmployeeById(employeeId);
+			EntityModel<EmployeesBean> employesResource = employeeServiceProxy.getEmployeeById(employeeId);
 			employesResource
 					.add(linkTo(methodOn(EMSEmployeesController.class).getEmployeeById(employeeId)).withRel("_self"));
 
@@ -77,14 +77,14 @@ public class EMSEmployeesController {
 	}
 
 	@PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Resource<EmployeesBean> addEmployee(@RequestBody EmployeesBean employeesBean) throws Exception {
+	public EntityModel<EmployeesBean> addEmployee(@RequestBody EmployeesBean employeesBean) throws Exception {
 
-		Resource<EmployeesBean> employesResource = null;
+		EntityModel<EmployeesBean> employesResource = null;
 		try {
 			logger.debug("--------> addEmployee() :" + employeesBean.toString());
 
 			employeeServiceProxy.addEmployee(employeesBean);
-			employesResource = new Resource<EmployeesBean>(employeesBean);
+			employesResource = EntityModel.of(employeesBean);
 			employesResource.add(linkTo(methodOn(EMSEmployeesController.class).getEmployees(0, 10)).withRel("_self"));
 
 			return employesResource;

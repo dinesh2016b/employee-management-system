@@ -6,7 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.online.ems.bean.EmployeesBean;
 import com.online.ems.bean.SalariesBean;
 import com.online.ems.service.SalariesServiceProxy;
 
@@ -30,18 +29,17 @@ public class EMSSalariesController {
 	private SalariesServiceProxy salariesServiceProxy;
 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<List<Resource<SalariesBean>>> getSalariesByEmployeeId(@PathVariable(value = "id") int id)
+	public ResponseEntity<List<EntityModel<SalariesBean>>> getSalariesByEmployeeId(@PathVariable(value = "id") int id)
 			throws Exception {
 
 		logger.info("------------> getEmployees()");
 
-		Resource<EmployeesBean> employesResource = null;
-		List<Resource<SalariesBean>> employeesResourceList = new ArrayList<Resource<SalariesBean>>();
+		List<EntityModel<SalariesBean>> employeesResourceList = new ArrayList<>();
 
 		try {
 			SalariesBean salariesBean = salariesServiceProxy.getSalariesByEmployeeId(id);
 
-			// employesResource = new Resource<EmployeesBean>(salariesBean);
+			// employesResource = EntityModel.of(salariesBean);
 			// employesResource.add(linkTo(methodOn(SalariesController.class).getEmployeeById(salariesBean.getEmployeesBean())
 			// .withRel("_self"));
 

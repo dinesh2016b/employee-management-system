@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: backend-employee-service
+              uri: lb://backend-employee-service
+              predicates:
+                - Path=/backend-employee-service/**
+              filters:
+                - StripPrefix=1
+            - id: backend-department-service
+              uri: lb://backend-department-service
+              predicates:
+                - Path=/backend-department-service/**
+              filters:
+                - StripPrefix=1
+            - id: backend-salaries-service
+              uri: lb://backend-salaries-service
+              predicates:
+                - Path=/backend-salaries-service/**
+              filters:
+                - StripPrefix=1

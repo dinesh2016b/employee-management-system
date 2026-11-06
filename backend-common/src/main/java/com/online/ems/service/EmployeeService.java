@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import com.online.ems.bean.DepartmentsBean;
@@ -69,7 +70,7 @@ public class EmployeeService {
 	public EmployeesBean getEmployeesById(Long employeeId) throws Exception {
 
 		EmployeesBean employeesBean = null;
-		Employees employees = employeeRepository.findById(employeeId).orElseThrow(
+		Employees employees = employeeRepository.findByEmpNo(employeeId).orElseThrow(
 				() -> new ResourceNotFoundException("Employees not found for this empNo :: " + employeeId));
 
 		if (employees != null) {

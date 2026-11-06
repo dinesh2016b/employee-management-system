@@ -1,7 +1,7 @@
 package com.online.ems.controller;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,20 +37,20 @@ public class EmployeesController {
 	private EmployeeService employeeService;
 
 	@GetMapping(path = "/pageNo/{pageNo}/size/{size}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Resource<EmployeesBean>> getEmployees(@PathVariable(value = "pageNo") int pageNo,
+	public List<EntityModel<EmployeesBean>> getEmployees(@PathVariable(value = "pageNo") int pageNo,
 			@PathVariable(value = "size") int size) throws Exception {
 
 		logger.info("------------> getEmployees()");
 
-		Resource<EmployeesBean> employesResource = null;
-		List<Resource<EmployeesBean>> employeesResourceList = new ArrayList<Resource<EmployeesBean>>();
+		EntityModel<EmployeesBean> employesResource = null;
+		List<EntityModel<EmployeesBean>> employeesResourceList = new ArrayList<>();
 
 		try {
 			List<EmployeesBean> employeesBeans = employeeService.getEmployees(pageNo, size);
 
 			for (EmployeesBean employeesBean : employeesBeans) {
 
-				employesResource = new Resource<EmployeesBean>(employeesBean);
+				employesResource = EntityModel.of(employeesBean);
 				employesResource
 						.add(linkTo(methodOn(EmployeesController.class).getEmployeeById(employeesBean.getEmpNo()))
 								.withRel("_self"));
@@ -66,9 +66,9 @@ public class EmployeesController {
 	}
 
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Resource<EmployeesBean> getEmployeeById(@PathVariable(value = "id") Long employeeId) throws Exception {
+	public EntityModel<EmployeesBean> getEmployeeById(@PathVariable(value = "id") Long employeeId) throws Exception {
 
-		Resource<EmployeesBean> employesResource = null;
+		EntityModel<EmployeesBean> employesResource = null;
 		try {
 
 			//restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("dinesh", "dinesh"));
@@ -80,7 +80,7 @@ public class EmployeesController {
 			EmployeesBean employeesBean = employeeService.getEmployeesById(employeeId);
 			//employeesBean.setDepartmentsBean(departmentsBean);
 
-			employesResource = new Resource<EmployeesBean>(employeesBean);
+			employesResource = EntityModel.of(employeesBean);
 			employesResource.add(linkTo(methodOn(EmployeesController.class).getEmployees(0, 10)).withRel("_self"));
 
 			return employesResource;
@@ -97,7 +97,7 @@ public class EmployeesController {
 	}
 
 	@PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Resource<EmployeesBean>> addEmployee(@RequestBody EmployeesBean employeesBean)
+	public ResponseEntity<EntityModel<EmployeesBean>> addEmployee(@RequestBody EmployeesBean employeesBean)
 			throws Exception {
 
 		logger.debug("--------> addEmployee() :" + employeesBean.toString());

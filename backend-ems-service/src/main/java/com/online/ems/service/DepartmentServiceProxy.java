@@ -3,7 +3,6 @@ package com.online.ems.service;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +18,6 @@ import com.online.ems.exception.ResourceNotFoundException;
 //@FeignClient(name = "backend-department-service")
 
 @FeignClient(name = "backend-zuul-api-gateway-server")
-@RibbonClient(name = "backend-department-service")
 public interface DepartmentServiceProxy {
 
 	// @GetMapping(path = "/departments/pageNo/{pageNo}/size/{size}")
